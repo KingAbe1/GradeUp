@@ -102,13 +102,12 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsUsername">Username</label>
                                             <input type="text" name="multiStepsUsername" id="multiStepsUsername"
-                                                class="form-control" placeholder="johndoe" />
+                                                class="form-control" placeholder="AbelLe" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsEmail">Email</label>
                                             <input type="email" name="multiStepsEmail" id="multiStepsEmail"
-                                                class="form-control" placeholder="john.doe@email.com"
-                                                aria-label="john.doe" />
+                                                class="form-control" placeholder="abelle@gmail.com" aria-label="john.doe" />
                                         </div>
                                         <div class="col-sm-6 form-password-toggle">
                                             <label class="form-label" for="multiStepsPass">Password</label>
@@ -159,35 +158,26 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsFirstName">First Name</label>
                                             <input type="text" id="multiStepsFirstName" name="multiStepsFirstName"
-                                                class="form-control" placeholder="John" />
+                                                class="form-control" placeholder="Abel" />
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsLastName">Last Name</label>
                                             <input type="text" id="multiStepsLastName" name="multiStepsLastName"
-                                                class="form-control" placeholder="Doe" />
+                                                class="form-control" placeholder="Legesse" />
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="multiStepsMobile">Mobile</label>
-                                            <div class="input-group">
-                                                <span class="input-group-text">ET (+251)</span>
-                                                <input type="text" id="multiStepsMobile" name="multiStepsMobile"
-                                                    class="form-control multi-steps-mobile" placeholder="966325849" />
-                                            </div>
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="multiStepsPincode">Address</label>
-                                            <input type="text" id="multiStepsPincode" name="multiStepsPincode"
-                                                class="form-control multi-steps-pincode" placeholder="Address"
-                                                maxlength="6" />
+                                            <label class="form-label" for="multiStepsMobile">Mobile Number</label>
+                                            <input type="text" id="multiStepsMobile" name="multiStepsMobile"
+                                                class="form-control" placeholder="+251956395579" />
                                         </div>
                                         <div class="col-md-6">
-                                            <label class="form-label" for="school_name">School Name</label>
-                                            <input type="text" id="school_name" name="school_name"
+                                            <label class="form-label" for="multiStepsSchool">School</label>
+                                            <input type="text" id="multiStepsSchool" name="multiStepsSchool"
                                                 class="form-control" placeholder="Write your school name" />
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label" for="grade">What grade are you in?</label>
-                                            <select name="grade" id="grade" class="select2 form-select"
+                                            <select name="grade" id="grade" class="form-select"
                                                 data-allow-clear="true">
                                                 <option value="">Select</option>
                                                 <option value="9">Grade 9</option>
@@ -198,66 +188,8 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsCity">City</label>
-                                            <input type="text" id="multiStepsCity" class="form-control"
-                                                placeholder="Jackson" />
-                                        </div>
-                                        <div class="col-sm-6">
-                                            <label class="form-label" for="multiStepsState">State</label>
-                                            <select id="multiStepsState" class="select2 form-select"
-                                                data-allow-clear="true">
-                                                <option value="">Select</option>
-                                                <option value="AL">Alabama</option>
-                                                <option value="AK">Alaska</option>
-                                                <option value="AZ">Arizona</option>
-                                                <option value="AR">Arkansas</option>
-                                                <option value="CA">California</option>
-                                                <option value="CO">Colorado</option>
-                                                <option value="CT">Connecticut</option>
-                                                <option value="DE">Delaware</option>
-                                                <option value="DC">District Of Columbia</option>
-                                                <option value="FL">Florida</option>
-                                                <option value="GA">Georgia</option>
-                                                <option value="HI">Hawaii</option>
-                                                <option value="ID">Idaho</option>
-                                                <option value="IL">Illinois</option>
-                                                <option value="IN">Indiana</option>
-                                                <option value="IA">Iowa</option>
-                                                <option value="KS">Kansas</option>
-                                                <option value="KY">Kentucky</option>
-                                                <option value="LA">Louisiana</option>
-                                                <option value="ME">Maine</option>
-                                                <option value="MD">Maryland</option>
-                                                <option value="MA">Massachusetts</option>
-                                                <option value="MI">Michigan</option>
-                                                <option value="MN">Minnesota</option>
-                                                <option value="MS">Mississippi</option>
-                                                <option value="MO">Missouri</option>
-                                                <option value="MT">Montana</option>
-                                                <option value="NE">Nebraska</option>
-                                                <option value="NV">Nevada</option>
-                                                <option value="NH">New Hampshire</option>
-                                                <option value="NJ">New Jersey</option>
-                                                <option value="NM">New Mexico</option>
-                                                <option value="NY">New York</option>
-                                                <option value="NC">North Carolina</option>
-                                                <option value="ND">North Dakota</option>
-                                                <option value="OH">Ohio</option>
-                                                <option value="OK">Oklahoma</option>
-                                                <option value="OR">Oregon</option>
-                                                <option value="PA">Pennsylvania</option>
-                                                <option value="RI">Rhode Island</option>
-                                                <option value="SC">South Carolina</option>
-                                                <option value="SD">South Dakota</option>
-                                                <option value="TN">Tennessee</option>
-                                                <option value="TX">Texas</option>
-                                                <option value="UT">Utah</option>
-                                                <option value="VT">Vermont</option>
-                                                <option value="VA">Virginia</option>
-                                                <option value="WA">Washington</option>
-                                                <option value="WV">West Virginia</option>
-                                                <option value="WI">Wisconsin</option>
-                                                <option value="WY">Wyoming</option>
-                                            </select>
+                                            <input type="text" id="multiStepsCity" name="multiStepsCity"
+                                                class="form-control" placeholder="Addis Ababa" />
                                         </div>
                                         <div class="col-12 d-flex justify-content-between mt-4">
                                             <button class="btn btn-label-secondary btn-prev"> <i

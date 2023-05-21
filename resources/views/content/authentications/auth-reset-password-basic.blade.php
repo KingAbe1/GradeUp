@@ -43,7 +43,7 @@ $customizerHidden = 'customizer-hide';
           <!-- /Logo -->
           <h4 class="mb-1 pt-2">Reset Password 🔒</h4>
           <p class="mb-4">for <span class="fw-bold">john.doe@email.com</span></p>
-          <form id="formAuthentication" action="{{url('auth/login-basic')}}" method="POST">
+          <form id="formAuthentication" action="{{url('auth/login')}}" method="POST">
             <div class="mb-3 form-password-toggle">
               <label class="form-label" for="password">New Password</label>
               <div class="input-group input-group-merge">
@@ -62,7 +62,7 @@ $customizerHidden = 'customizer-hide';
               Set new password
             </button>
             <div class="text-center">
-              <a href="{{url('auth/login-basic')}}">
+              <a href="{{url('auth/login')}}">
                 <i class="ti ti-chevron-left scaleX-n1-rtl"></i>
                 Back to login
               </a>

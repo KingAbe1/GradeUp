@@ -78,7 +78,7 @@ $customizerHidden = 'customizer-hide';
 
           <p class="text-center">
             <span>Already have an account?</span>
-            <a href="{{url('auth/login-basic')}}">
+            <a href="{{url('auth/login')}}">
               <span>Sign in instead</span>
             </a>
           </p>
