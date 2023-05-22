@@ -42,11 +42,10 @@
             <div
                 class="d-none d-lg-flex col-lg-4 align-items-center justify-content-center p-5 auth-cover-bg-color position-relative auth-multisteps-bg-height">
                 <img src="{{ asset('assets/img/illustrations/auth-register-multisteps-illustration.png') }}"
-                    alt="auth-register-multisteps" class="img-fluid" width="280">
+                    alt="auth-register" class="img-fluid" width="280">
 
                 <img src="{{ asset('assets/img/illustrations/bg-shape-image-' . $configData['style'] . '.png') }}"
-                    alt="auth-register-multisteps" class="platform-bg"
-                    data-app-light-img="illustrations/bg-shape-image-light.png"
+                    alt="auth-register" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png"
                     data-app-dark-img="illustrations/bg-shape-image-dark.png">
             </div>
             <!-- /Left Text -->
@@ -131,12 +130,6 @@
                                                     id="multiStepsConfirmPass2"><i class="ti ti-eye-off"></i></span>
                                             </div>
                                         </div>
-                                        {{-- <div class="col-md-12">
-                                            <label class="form-label" for="multiStepsURL">Profile Link</label>
-                                            <input type="text" name="multiStepsURL" id="multiStepsURL"
-                                                class="form-control" placeholder="johndoe/profile"
-                                                aria-label="johndoe" />
-                                        </div> --}}
                                         <div class="col-12 d-flex justify-content-between mt-4">
                                             <button class="btn btn-label-secondary btn-prev" disabled> <i
                                                     class="ti ti-arrow-left ti-xs me-sm-1 me-0"></i>
@@ -177,7 +170,7 @@
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label" for="grade">What grade are you in?</label>
-                                            <select name="grade" id="grade" class="form-select"
+                                            <select name="grade" id="grade" class="select2 form-select"
                                                 data-allow-clear="true">
                                                 <option value="">Select</option>
                                                 <option value="9">Grade 9</option>
@@ -218,8 +211,8 @@
                                                         <small class="fs-6">A simple start for start ups &
                                                             Students</small>
                                                         <span class="d-flex justify-content-center">
-                                                            <sup class="text-primary fs-6 lh-1 mt-3">$</sup>
-                                                            <span class="fw-semibold fs-2 text-primary">0</span>
+                                                            <sup class="text-primary fs-6 lh-1 mt-3">ETB</sup>
+                                                            <span class="fw-semibold fs-2 text-primary">150</span>
                                                             <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/month</sub>
                                                         </span>
                                                     </span>
@@ -236,8 +229,8 @@
                                                         <span class="custom-option-title fs-4 mb-1">Standard</span>
                                                         <small class="fs-6">For small to medium businesses</small>
                                                         <span class="d-flex justify-content-center">
-                                                            <sup class="text-primary fs-6 lh-1 mt-3">$</sup>
-                                                            <span class="fw-semibold fs-2 text-primary">99</span>
+                                                            <sup class="text-primary fs-6 lh-1 mt-3">ETB</sup>
+                                                            <span class="fw-semibold fs-2 text-primary">200</span>
                                                             <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/month</sub>
                                                         </span>
                                                     </span>
@@ -255,9 +248,9 @@
                                                         <small class="fs-6">Solution for enterprise &
                                                             organizations</small>
                                                         <span class="d-flex justify-content-center">
-                                                            <sup class="text-primary fs-6 lh-1 mt-3">$</sup>
+                                                            <sup class="text-primary fs-6 lh-1 mt-3">ETB</sup>
                                                             <span class="fw-semibold fs-2 text-primary">499</span>
-                                                            <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/year</sub>
+                                                            <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/month</sub>
                                                         </span>
                                                     </span>
                                                     <input name="customRadioIcon" class="form-check-input" type="radio"
@@ -267,46 +260,13 @@
                                         </div>
                                     </div>
                                     <!--/ Custom plan options -->
-                                    <div class="content-header mb-4">
+                                    {{-- <div class="content-header mb-4">
                                         <h3 class="mb-1">Payment Information</h3>
                                         <p>Enter your card information</p>
-                                    </div>
+                                    </div> --}}
                                     <!-- Credit Card Details -->
                                     <div class="row g-3">
-                                        <div class="col-md-12">
-                                            <label class="form-label w-100" for="multiStepsCard">Card Number</label>
-                                            <div class="input-group input-group-merge">
-                                                <input id="multiStepsCard" class="form-control multi-steps-card"
-                                                    name="multiStepsCard" type="text"
-                                                    placeholder="1356 3215 6548 7898"
-                                                    aria-describedby="multiStepsCardImg" />
-                                                <span class="input-group-text cursor-pointer" id="multiStepsCardImg"><span
-                                                        class="card-type"></span></span>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-5">
-                                            <label class="form-label" for="multiStepsName">Name On Card</label>
-                                            <input type="text" id="multiStepsName" class="form-control"
-                                                name="multiStepsName" placeholder="John Doe" />
-                                        </div>
-                                        <div class="col-6 col-md-4">
-                                            <label class="form-label" for="multiStepsExDate">Expiry Date</label>
-                                            <input type="text" id="multiStepsExDate"
-                                                class="form-control multi-steps-exp-date" name="multiStepsExDate"
-                                                placeholder="MM/YY" />
-                                        </div>
-                                        <div class="col-6 col-md-3">
-                                            <label class="form-label" for="multiStepsCvv">CVV Code</label>
-                                            <div class="input-group input-group-merge">
-                                                <input type="text" id="multiStepsCvv"
-                                                    class="form-control multi-steps-cvv" name="multiStepsCvv"
-                                                    maxlength="3" placeholder="654" />
-                                                <span class="input-group-text cursor-pointer" id="multiStepsCvvHelp"><i
-                                                        class="ti ti-help text-muted" data-bs-toggle="tooltip"
-                                                        data-bs-placement="top"
-                                                        title="Card Verification Value"></i></span>
-                                            </div>
-                                        </div>
+
                                         <div class="col-12 d-flex justify-content-between mt-4">
                                             <button class="btn btn-label-secondary btn-prev"> <i
                                                     class="ti ti-arrow-left ti-xs me-sm-1 me-0"></i>

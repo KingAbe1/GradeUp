@@ -4,7 +4,7 @@ $customizerHidden = 'customizer-hide';
 
 @extends('layouts/layoutMaster')
 
-@section('title', 'Register Basic - Pages')
+@section('title', 'Registeration')
 
 @section('vendor-style')
 <!-- Vendor -->

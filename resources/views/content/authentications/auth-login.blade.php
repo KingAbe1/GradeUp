@@ -83,7 +83,7 @@
 
                         <p class="text-center">
                             <span>New on our platform?</span>
-                            <a href="{{ url('auth/register-multisteps') }}">
+                            <a href="{{ url('auth/register') }}">
                                 <span>Create an account</span>
                             </a>
                         </p>

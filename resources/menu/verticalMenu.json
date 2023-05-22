@@ -375,9 +375,9 @@
               "target": "_blank"
             },
             {
-              "url": "auth/register-multisteps",
+              "url": "auth/register",
               "name": "Multi-steps",
-              "slug": "auth-register-multisteps",
+              "slug": "auth-register",
               "target": "_blank"
             }
           ]
