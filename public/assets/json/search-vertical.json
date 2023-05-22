@@ -228,7 +228,7 @@
     {
       "name": "Login Basic",
       "icon": "ti-login",
-      "url": "auth/login-basic"
+      "url": "auth/login"
     },
     {
       "name": "Login Cover",
