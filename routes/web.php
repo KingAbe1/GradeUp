@@ -80,18 +80,27 @@ Route::get('/pages/misc-comingsoon', $controller_path . '\pages\MiscComingSoon@i
 Route::get('/pages/misc-not-authorized', $controller_path . '\pages\MiscNotAuthorized@index')->name('pages-misc-not-authorized')->middleware('auth');
 
 // authentication
+
+//Show login page
 Route::get('/auth/login', $controller_path . '\authentications\LoginBasic@index')->name('auth-login');
-Route::get('/auth/login-cover', $controller_path . '\authentications\LoginCover@index')->name('auth-login-cover');
-Route::get('/auth/register-basic', $controller_path . '\authentications\RegisterBasic@index')->name('auth-register-basic');
-Route::get('/auth/register-cover', $controller_path . '\authentications\RegisterCover@index')->name('auth-register-cover');
+Route::post('/auth/login', $controller_path . '\authentications\LoginBasic@check')->name('auth-login-check');
+
+//Show registration page
 Route::get('/auth/register', $controller_path . '\authentications\RegisterMultiSteps@index')->name('auth-register');
+//Registering students
+Route::post('/auth/register', $controller_path . '\authentications\RegisterMultiSteps@store')->name('auth-register-students');
+
+
+// Route::get('/auth/login-cover', $controller_path . '\authentications\LoginCover@index')->name('auth-login-cover')->middleware('auth');
+// Route::get('/auth/register-basic', $controller_path . '\authentications\RegisterBasic@index')->name('auth-register-basic')->middleware('auth');
+// Route::get('/auth/register-cover', $controller_path . '\authentications\RegisterCover@index')->name('auth-register-cover')->middleware('auth');
 Route::get('/auth/verify-email-basic', $controller_path . '\authentications\VerifyEmailBasic@index')->name('auth-verify-email-basic');
 Route::get('/auth/verify-email-cover', $controller_path . '\authentications\VerifyEmailCover@index')->name('auth-verify-email-cover');
 Route::get('/auth/reset-password-basic', $controller_path . '\authentications\ResetPasswordBasic@index')->name('auth-reset-password-basic');
 Route::get('/auth/reset-password-cover', $controller_path . '\authentications\ResetPasswordCover@index')->name('auth-reset-password-cover');
 Route::get('/auth/forgot-password-basic', $controller_path . '\authentications\ForgotPasswordBasic@index')->name('auth-reset-password-basic');
 Route::get('/auth/forgot-password-cover', $controller_path . '\authentications\ForgotPasswordCover@index')->name('auth-forgot-password-cover');
-Route::get('/auth/two-steps-basic', $controller_path . '\authentications\TwoStepsBasic@index')->name('auth-two-steps-basic')->middleware('auth');
+Route::get('/auth/two-steps-basic', $controller_path . '\authentications\TwoStepsBasic@index')->name('auth-two-steps-basic');
 Route::get('/auth/two-steps-cover', $controller_path . '\authentications\TwoStepsCover@index')->name('auth-two-steps-cover');
 
 // wizard example
@@ -167,23 +176,33 @@ Route::get('/form/layouts-horizontal', $controller_path . '\form_layouts\Horizon
 Route::get('/form/layouts-sticky', $controller_path . '\form_layouts\StickyActions@index')->name('form-layouts-sticky')->middleware('auth');
 
 // form wizards
-Route::get('/form/wizard-numbered', $controller_path . '\form_wizard\Numbered@index')->name('form-wizard-numbered')->middleware('auth')->middleware('auth');
-Route::get('/form/wizard-icons', $controller_path . '\form_wizard\Icons@index')->name('form-wizard-icons')->middleware('auth')->middleware('auth');
-Route::get('/form/validation', $controller_path . '\form_validation\Validation@index')->name('form-validation')->middleware('auth')->middleware('auth');
+Route::get('/form/wizard-numbered', $controller_path . '\form_wizard\Numbered@index')->name('form-wizard-numbered')->middleware('auth');
+Route::get('/form/wizard-icons', $controller_path . '\form_wizard\Icons@index')->name('form-wizard-icons')->middleware('auth');
+Route::get('/form/validation', $controller_path . '\form_validation\Validation@index')->name('form-validation')->middleware('auth');
 
 // tables
 Route::get('/tables/basic', $controller_path . '\tables\Basic@index')->name('tables-basic')->middleware('auth');
-Route::get('/tables/datatables-basic', $controller_path . '\tables\DatatableBasic@index')->name('tables-datatables-basic')->middleware('auth')->middleware('auth');
-Route::get('/tables/datatables-advanced', $controller_path . '\tables\DatatableAdvanced@index')->name('tables-datatables-advanced')->middleware('auth')->middleware('auth');
-Route::get('/tables/datatables-extensions', $controller_path . '\tables\DatatableExtensions@index')->name('tables-datatables-extensions')->middleware('auth')->middleware('auth');
+Route::get('/tables/datatables-basic', $controller_path . '\tables\DatatableBasic@index')->name('tables-datatables-basic')->middleware('auth');
+Route::get('/tables/datatables-advanced', $controller_path . '\tables\DatatableAdvanced@index')->name('tables-datatables-advanced')->middleware('auth');
+Route::get('/tables/datatables-extensions', $controller_path . '\tables\DatatableExtensions@index')->name('tables-datatables-extensions')->middleware('auth');
 
 // charts
-Route::get('/charts/apex', $controller_path . '\charts\ApexCharts@index')->name('charts-apex')->middleware('auth')->middleware('auth');
-Route::get('/charts/chartjs', $controller_path . '\charts\ChartJs@index')->name('charts-chartjs')->middleware('auth')->middleware('auth');
+Route::get('/charts/apex', $controller_path . '\charts\ApexCharts@index')->name('charts-apex')->middleware('auth');
+Route::get('/charts/chartjs', $controller_path . '\charts\ChartJs@index')->name('charts-chartjs')->middleware('auth');
 
 // maps
-Route::get('/maps/leaflet', $controller_path . '\maps\Leaflet@index')->name('maps-leaflet')->middleware('auth')->middleware('auth');
+Route::get('/maps/leaflet', $controller_path . '\maps\Leaflet@index')->name('maps-leaflet')->middleware('auth');
 
 // laravel example
 Route::get('/laravel/user-management', [UserManagement::class, 'UserManagement'])->name('laravel-example-user-management')->middleware('auth')->middleware('auth');
-Route::resource('/user-list', UserManagement::class)->middleware('auth')->middleware('auth');
+Route::resource('/user-list', UserManagement::class)->middleware('auth');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

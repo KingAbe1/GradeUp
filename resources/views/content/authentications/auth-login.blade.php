@@ -45,7 +45,9 @@
                         <h4 class="mb-1 pt-2">Welcome to {{ config('variables.templateName') }}! 👋</h4>
                         <p class="mb-4">Please sign-in to your account and start the adventure</p>
 
-                        <form id="formAuthentication" class="mb-3" action="{{ url('/') }}" method="POST">
+                        <form id="formAuthentication" class="mb-3" action="{{ route('auth-login-check') }}"
+                            method="POST">
+                            @csrf
                             <div class="mb-3">
                                 <label for="email" class="form-label">Phone Number</label>
                                 <div class="input-group">

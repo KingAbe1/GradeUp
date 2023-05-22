@@ -9,6 +9,8 @@
 
 @section('vendor-style')
     <!-- Vendor -->
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/toastr/toastr.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/animate-css/animate.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/bootstrap-select/bootstrap-select.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
@@ -25,6 +27,7 @@
     <script src="{{ asset('assets/vendor/libs/cleavejs/cleave-phone.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/bs-stepper/bs-stepper.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/toastr/toastr.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') }}"></script>
@@ -90,7 +93,9 @@
                             </div>
                         </div>
                         <div class="bs-stepper-content">
-                            <form id="multiStepsForm" onSubmit="return false">
+                            <form method="POST" action="{{ route('auth-register-students') }}" id="multiStepsForm"
+                                onSubmit="return false">
+                                @csrf
                                 <!-- Account Details -->
                                 <div id="accountDetailsValidation" class="content">
                                     <div class="content-header mb-4">
@@ -161,18 +166,18 @@
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsMobile">Mobile Number</label>
                                             <input type="text" id="multiStepsMobile" name="multiStepsMobile"
-                                                class="form-control" placeholder="+251956395579" />
+                                                class="form-control" placeholder="251956395579" />
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label" for="multiStepsSchool">School</label>
                                             <input type="text" id="multiStepsSchool" name="multiStepsSchool"
-                                                class="form-control" placeholder="Write your school name" />
+                                                class="form-control" placeholder="Enter your school name" />
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label" for="grade">What grade are you in?</label>
                                             <select name="grade" id="grade" class="select2 form-select"
                                                 data-allow-clear="true">
-                                                <option value="">Select</option>
+                                                {{-- <option value="">Select</option> --}}
                                                 <option value="9">Grade 9</option>
                                                 <option value="10">Grade 10</option>
                                                 <option value="11">Grade 11</option>
@@ -180,9 +185,23 @@
                                             </select>
                                         </div>
                                         <div class="col-sm-6">
-                                            <label class="form-label" for="multiStepsCity">City</label>
-                                            <input type="text" id="multiStepsCity" name="multiStepsCity"
-                                                class="form-control" placeholder="Addis Ababa" />
+                                            <label class="form-label" for="multiStepsCity">Region</label>
+                                            <select id="multiStepsCity" name="multiStepsCity"
+                                                class="select2 form-control">
+                                                <option value="Addis Ababa">Addis Ababa Region</option>
+                                                <option value="Tigray">Tigray Region</option>
+                                                <option value="Amhara">Amhara Region</option>
+                                                <option value="Somali">Somali Region</option>
+                                                <option value="Afar">Afar Region</option>
+                                                <option value="Oromia">Oromia Region</option>
+                                                <option value="Sidama">Sidama Region</option>
+                                                <option value="Benishangul-Gumuz">Benishangul-Gumuz Region</option>
+                                                <option value="Harari">Harari Region</option>
+                                                <option value="Gambela">Gambela Region</option>
+                                                <option value="Dire Dawa">Dire Dawa Region</option>
+                                                <option value="South West Ethiopia Peoples">South West Ethiopia Peoples'
+                                                    Region</option>
+                                            </select>
                                         </div>
                                         <div class="col-12 d-flex justify-content-between mt-4">
                                             <button class="btn btn-label-secondary btn-prev"> <i
@@ -212,12 +231,12 @@
                                                             Students</small>
                                                         <span class="d-flex justify-content-center">
                                                             <sup class="text-primary fs-6 lh-1 mt-3">ETB</sup>
-                                                            <span class="fw-semibold fs-2 text-primary">150</span>
+                                                            <span class="fw-semibold fs-2 text-primary">200</span>
                                                             <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/month</sub>
                                                         </span>
                                                     </span>
                                                     <input name="customRadioIcon" class="form-check-input" type="radio"
-                                                        value="" id="basicOption" />
+                                                        value="200" id="basicOption" />
                                                 </label>
                                             </div>
                                         </div>
@@ -230,12 +249,12 @@
                                                         <small class="fs-6">For small to medium businesses</small>
                                                         <span class="d-flex justify-content-center">
                                                             <sup class="text-primary fs-6 lh-1 mt-3">ETB</sup>
-                                                            <span class="fw-semibold fs-2 text-primary">200</span>
+                                                            <span class="fw-semibold fs-2 text-primary">300</span>
                                                             <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/month</sub>
                                                         </span>
                                                     </span>
                                                     <input name="customRadioIcon" class="form-check-input" type="radio"
-                                                        value="" id="standardOption" checked />
+                                                        value="300" id="standardOption" checked />
                                                 </label>
                                             </div>
                                         </div>
@@ -249,24 +268,17 @@
                                                             organizations</small>
                                                         <span class="d-flex justify-content-center">
                                                             <sup class="text-primary fs-6 lh-1 mt-3">ETB</sup>
-                                                            <span class="fw-semibold fs-2 text-primary">499</span>
+                                                            <span class="fw-semibold fs-2 text-primary">500</span>
                                                             <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/month</sub>
                                                         </span>
                                                     </span>
                                                     <input name="customRadioIcon" class="form-check-input" type="radio"
-                                                        value="" id="enterpriseOption" />
+                                                        value="500" id="enterpriseOption" />
                                                 </label>
                                             </div>
                                         </div>
                                     </div>
-                                    <!--/ Custom plan options -->
-                                    {{-- <div class="content-header mb-4">
-                                        <h3 class="mb-1">Payment Information</h3>
-                                        <p>Enter your card information</p>
-                                    </div> --}}
-                                    <!-- Credit Card Details -->
                                     <div class="row g-3">
-
                                         <div class="col-12 d-flex justify-content-between mt-4">
                                             <button class="btn btn-label-secondary btn-prev"> <i
                                                     class="ti ti-arrow-left ti-xs me-sm-1 me-0"></i>
