@@ -1,8 +1,8 @@
 const { EnvironmentPlugin } = require('webpack');
+const { VueLoaderPlugin } = require('vue-loader');
 const mix = require('laravel-mix');
 const glob = require('glob');
 const path = require('path');
-
 /*
  |--------------------------------------------------------------------------
  | Configure mix

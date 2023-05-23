@@ -196,3 +196,13 @@ Route::get('/maps/leaflet', $controller_path . '\maps\Leaflet@index')->name('map
 // laravel example
 Route::get('/laravel/user-management', [UserManagement::class, 'UserManagement'])->name('laravel-example-user-management')->middleware('auth')->middleware('auth');
 Route::resource('/user-list', UserManagement::class)->middleware('auth');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

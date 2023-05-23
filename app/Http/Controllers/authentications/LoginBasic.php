@@ -19,14 +19,16 @@ class LoginBasic extends Controller
   public function check(Request $request)
   {
     $user_input = $request->all();
-    $user = User::where('phone_number', "251" . $user_input['email-username'])->first();
-    if ($user && Hash::check($user_input['password'], $user->password)) {
-      // if (Auth::attempt(['phone_number' => "251" . $user_input['email-username'], 'password' => $user_input['password']])) {
-      $userx = Auth::user();
-      dd($userx);
-      Auth::login($user);
-      return redirect()->route('dashboard-analytics');
-      // }
+    $phone_number = "251" . $user_input['email-username'];
+    $password = $user_input['password'];
+
+    $user = User::where('phone_number', $phone_number)->first();
+    if ($user && Hash::check($password, $user->password)) {
+      if (Auth::attempt(['phone_number' => $phone_number, 'password' => $password])) {
+        $user = Auth::user();
+        Auth::login($user);
+        return redirect()->route('dashboard-analytics');
+      }
     } else {
       dd('Nothing');
     }
