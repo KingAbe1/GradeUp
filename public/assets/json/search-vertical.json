@@ -248,7 +248,7 @@
     {
       "name": "Register Multi-steps",
       "icon": "ti-user-plus",
-      "url": "auth/register-multisteps"
+      "url": "auth/register"
     },
     {
       "name": "Verify Email Basic",

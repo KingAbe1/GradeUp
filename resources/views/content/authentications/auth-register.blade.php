@@ -42,11 +42,10 @@
             <div
                 class="d-none d-lg-flex col-lg-4 align-items-center justify-content-center p-5 auth-cover-bg-color position-relative auth-multisteps-bg-height">
                 <img src="{{ asset('assets/img/illustrations/auth-register-multisteps-illustration.png') }}"
-                    alt="auth-register-multisteps" class="img-fluid" width="280">
+                    alt="auth-register" class="img-fluid" width="280">
 
                 <img src="{{ asset('assets/img/illustrations/bg-shape-image-' . $configData['style'] . '.png') }}"
-                    alt="auth-register-multisteps" class="platform-bg"
-                    data-app-light-img="illustrations/bg-shape-image-light.png"
+                    alt="auth-register" class="platform-bg" data-app-light-img="illustrations/bg-shape-image-light.png"
                     data-app-dark-img="illustrations/bg-shape-image-dark.png">
             </div>
             <!-- /Left Text -->
