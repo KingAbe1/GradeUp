@@ -14,7 +14,7 @@ $(function () {
       var $this = $(this);
       $this.wrap('<div class="position-relative"></div>');
       $this.select2({
-        placeholder: 'Select an country',
+        placeholder: 'Select your current garde',
         dropdownParent: $this.parent()
       });
     });
@@ -189,6 +189,15 @@ document.addEventListener('DOMContentLoaded', function (e) {
             validators: {
               notEmpty: {
                 message: 'Please enter phone number'
+              },
+              stringLength: {
+                min: 12,
+                max: 12,
+                message: 'mobile number must be 12 digit long'
+              },
+              regexp: {
+                regexp: /^[2][5][1][0-9]+$/,
+                message: 'The mobile number must start with 251 and can only consist of numbers'
               }
             }
           },
@@ -209,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
           multiStepsCity: {
             validators: {
               notEmpty: {
-                message: 'Please enter your city name'
+                message: 'Please select your region'
               }
             }
           }
@@ -281,11 +290,11 @@ document.addEventListener('DOMContentLoaded', function (e) {
           });
         }
       }).on('core.form.valid', function () {
-        // You can submit the form
-        // stepsValidationForm.submit()
-        // or send the form data to server via an Ajax request
-        // To make the demo simple, I just placed an alert
-        alert('Submitted..!!');
+        toastr.success('Thank you for registering with us!');
+
+        setTimeout(() => {
+          stepsValidationForm.submit();
+        }, 2000);
       });
 
       stepsValidationNext.forEach(item => {
