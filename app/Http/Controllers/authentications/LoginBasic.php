@@ -30,7 +30,8 @@ class LoginBasic extends Controller
         return redirect()->route('dashboard-analytics');
       }
     } else {
-      dd('Nothing');
+      // dd('s');
+      return redirect()->route('auth-login');
     }
   }
 }
