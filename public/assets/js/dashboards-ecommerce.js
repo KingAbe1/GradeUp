@@ -420,11 +420,11 @@
         {
           name: 'Earning',
           data: [270, 210, 180, 200, 250, 280, 250, 270, 150]
-        },
-        {
-          name: 'Expense',
-          data: [-140, -160, -180, -150, -100, -60, -80, -100, -180]
         }
+        // {
+        // name: 'Expense',
+        // data: [-140, -160, -180, -150, -100, -60, -80, -100, -180]
+        // }
       ],
       chart: {
         height: 365,
@@ -475,7 +475,7 @@
         }
       },
       grid: {
-        show: false,
+        show: true,
         padding: {
           bottom: -8,
           top: 20
@@ -491,10 +491,10 @@
           }
         },
         axisTicks: {
-          show: false
+          show: true
         },
         axisBorder: {
-          show: false
+          show: true
         }
       },
       yaxis: {
@@ -506,7 +506,7 @@
             fontFamily: 'Public Sans'
           }
         },
-        min: -200,
+        min: 0,
         max: 300,
         tickAmount: 5
       },
@@ -867,7 +867,9 @@
             return (
               '<div class="d-flex align-items-center">' +
               '<a href="javascript:;" class="text-body" data-bs-toggle="tooltip" title="Send Mail"><i class="ti ti-mail me-2 ti-sm"></i></a>' +
-              '<a href="' + baseUrl + 'app/invoice/preview" class="text-body" data-bs-toggle="tooltip" title="Preview"><i class="ti ti-eye mx-2 ti-sm"></i></a>' +
+              '<a href="' +
+              baseUrl +
+              'app/invoice/preview" class="text-body" data-bs-toggle="tooltip" title="Preview"><i class="ti ti-eye mx-2 ti-sm"></i></a>' +
               '<a href="javascript:;" class="text-body" data-bs-toggle="tooltip" title="Download"><i class="ti ti-dots-vertical mx-1 ti-sm"></i></a>' +
               '</div>'
             );
@@ -902,7 +904,7 @@
           text: '<i class="ti ti-plus me-md-2"></i><span class="d-md-inline-block d-none">Create Invoice</span>',
           className: 'btn btn-primary',
           action: function (e, dt, button, config) {
-            window.location =  baseUrl + 'app/invoice/add';
+            window.location = baseUrl + 'app/invoice/add';
           }
         }
       ],

@@ -2,7 +2,7 @@
 // Variables
 return [
   "creatorName" => "Abel Legesse",
-  "creatorUrl" => "https://pixinvent.com",
+  "creatorUrl" => "https://gradeupnow.com",
   "templateName" => "GradeUp",
   "templateSuffix" => "",
   "templateVersion" => "1.0.0",

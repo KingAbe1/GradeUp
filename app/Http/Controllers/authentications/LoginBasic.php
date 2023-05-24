@@ -25,11 +25,9 @@ class LoginBasic extends Controller
     $user = User::join('roles', 'users.role_id', 'roles.id')->where('phone_number', $phone_number)->first();
     if ($user && Hash::check($password, $user->password)) {
       if (Auth::attempt(['phone_number' => $phone_number, 'password' => $password])) {
-
-        Auth::user()->role_name = $user->name;
-        $user = Auth::user();
-        Auth::login($user);
-        return redirect()->route('dashboard');
+        $xuser = Auth::user();
+        Auth::login($xuser);
+        return redirect('/');
       }
     } else {
       return redirect()->route('auth-login');

@@ -72,7 +72,7 @@
         <li class="nav-item navbar-dropdown dropdown-user dropdown">
             <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
                 <div class="avatar avatar-online">
-                    <img src="{{ Auth::user() ? Auth::user()->profile_photo_url : asset('assets/img/avatars/1.png') }}"
+                    <img src="{{ Auth::user()->profile_photo_url ? Auth::user()->profile_photo_url : asset('assets/img/avatars/1.png') }}"
                         alt class="h-auto rounded-circle">
                 </div>
             </a>
@@ -82,7 +82,7 @@
                         <div class="d-flex">
                             <div class="flex-shrink-0 me-3">
                                 <div class="avatar avatar-online">
-                                    <img src="{{ Auth::user() ? Auth::user()->profile_photo_url : asset('assets/img/avatars/1.png') }}"
+                                    <img src="{{ Auth::user()->profile_photo_url ? Auth::user()->profile_photo_url : asset('assets/img/avatars/1.png') }}"
                                         alt class="h-auto rounded-circle">
                                 </div>
                             </div>
@@ -92,7 +92,8 @@
                                         {{ Auth::user()->user_name }}
                                     @endif
                                 </span>
-                                <small class="text-muted">{{ Auth::user()->role_id }}</small>
+                                <small
+                                    class="text-muted">{{ Auth::user()->role_id == 1 ? 'Super Admin' : (Auth::user()->role_id == 2 ? 'Student' : 'Teacher') }}</small>
                             </div>
                         </div>
                     </a>
