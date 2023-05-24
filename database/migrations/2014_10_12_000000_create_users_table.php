@@ -19,11 +19,13 @@ return new class extends Migration
       $table->string('email')->unique();
       $table->string('phone_number')->unique();
       $table->string('profile_photo_url')->nullable();
-      $table->string('school_name');
-      $table->string('grade');
-      $table->string('region');
-      $table->string('plan');
-      $table->string('plan_trail');
+      $table->string('school_name')->nullable();
+      $table->string('grade')->nullable();
+      $table->string('region')->nullable();
+      $table->string('plan')->nullable();
+      $table->string('plan_trail')->nullable();
+      $table->enum('status', ['0', '1']);
+      $table->foreignId('role_id')->constrained('roles', 'id');
       $table->string('password');
       $table->timestamps();
     });
