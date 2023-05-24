@@ -222,61 +222,29 @@
                                     </div>
                                     <!-- Custom plan options -->
                                     <div class="row gap-md-0 gap-3 my-4">
-                                        <div class="col-md">
-                                            <div class="form-check custom-option custom-option-icon">
-                                                <label class="form-check-label custom-option-content" for="basicOption">
-                                                    <span class="custom-option-body">
-                                                        <span class="custom-option-title fs-4 mb-1">Basic</span>
-                                                        <small class="fs-6">A simple start for start ups &
-                                                            Students</small>
-                                                        <span class="d-flex justify-content-center">
-                                                            <sup class="text-primary fs-6 lh-1 mt-3">ETB</sup>
-                                                            <span class="fw-semibold fs-2 text-primary">200</span>
-                                                            <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/month</sub>
+                                        @foreach ($plans as $plan)
+                                            <div class="col-md">
+                                                <div class="form-check custom-option custom-option-icon">
+                                                    <label class="form-check-label custom-option-content"
+                                                        for="{{ $plan->input_id }}">
+                                                        <span class="custom-option-body">
+                                                            <span
+                                                                class="custom-option-title fs-4 mb-1">{{ $plan->name }}</span>
+                                                            <small class="fs-6">{{ $plan->description }}</small>
+                                                            <span class="d-flex justify-content-center">
+                                                                <sup class="text-primary fs-6 lh-1 mt-3">ETB</sup>
+                                                                <span
+                                                                    class="fw-semibold fs-2 text-primary">{{ $plan->price }}</span>
+                                                                <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/month</sub>
+                                                            </span>
                                                         </span>
-                                                    </span>
-                                                    <input name="customRadioIcon" class="form-check-input" type="radio"
-                                                        value="200" id="basicOption" />
-                                                </label>
+                                                        <input name="customRadioIcon" class="form-check-input"
+                                                            type="radio" value="{{ $plan->price }}"
+                                                            id="{{ $plan->input_id }}" />
+                                                    </label>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="col-md">
-                                            <div class="form-check custom-option custom-option-icon">
-                                                <label class="form-check-label custom-option-content"
-                                                    for="standardOption">
-                                                    <span class="custom-option-body">
-                                                        <span class="custom-option-title fs-4 mb-1">Standard</span>
-                                                        <small class="fs-6">For small to medium businesses</small>
-                                                        <span class="d-flex justify-content-center">
-                                                            <sup class="text-primary fs-6 lh-1 mt-3">ETB</sup>
-                                                            <span class="fw-semibold fs-2 text-primary">300</span>
-                                                            <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/month</sub>
-                                                        </span>
-                                                    </span>
-                                                    <input name="customRadioIcon" class="form-check-input" type="radio"
-                                                        value="300" id="standardOption" checked />
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="col-md">
-                                            <div class="form-check custom-option custom-option-icon">
-                                                <label class="form-check-label custom-option-content"
-                                                    for="enterpriseOption">
-                                                    <span class="custom-option-body">
-                                                        <span class="custom-option-title fs-4 mb-1">Enterprise</span>
-                                                        <small class="fs-6">Solution for enterprise &
-                                                            organizations</small>
-                                                        <span class="d-flex justify-content-center">
-                                                            <sup class="text-primary fs-6 lh-1 mt-3">ETB</sup>
-                                                            <span class="fw-semibold fs-2 text-primary">500</span>
-                                                            <sub class="lh-1 fs-6 mt-auto mb-2 text-muted">/month</sub>
-                                                        </span>
-                                                    </span>
-                                                    <input name="customRadioIcon" class="form-check-input" type="radio"
-                                                        value="500" id="enterpriseOption" />
-                                                </label>
-                                            </div>
-                                        </div>
+                                        @endforeach
                                     </div>
                                     <div class="row g-3">
                                         <div class="col-12 d-flex justify-content-between mt-4">
