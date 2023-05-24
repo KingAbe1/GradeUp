@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\View;
 
 class LoginBasic extends Controller
 {
@@ -27,6 +28,7 @@ class LoginBasic extends Controller
       if (Auth::attempt(['phone_number' => $phone_number, 'password' => $password])) {
         $xuser = Auth::user();
         Auth::login($xuser);
+        // View::share('role_name', $user->name);
         return redirect('/');
       }
     } else {

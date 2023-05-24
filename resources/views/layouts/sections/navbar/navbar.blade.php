@@ -1,6 +1,7 @@
 @php
     $containerNav = $containerNav ?? 'container-fluid';
     $navbarDetached = $navbarDetached ?? '';
+    // $role_name = session('role_name');
 @endphp
 
 <!-- Navbar -->
