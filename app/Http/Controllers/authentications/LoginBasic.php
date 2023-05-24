@@ -22,12 +22,14 @@ class LoginBasic extends Controller
     $phone_number = "251" . $user_input['email-username'];
     $password = $user_input['password'];
 
-    $user = User::where('phone_number', $phone_number)->first();
+    $user = User::join('roles', 'users.role_id', 'roles.id')->where('phone_number', $phone_number)->first();
     if ($user && Hash::check($password, $user->password)) {
       if (Auth::attempt(['phone_number' => $phone_number, 'password' => $password])) {
+
+        Auth::user()->role_name = $user->name;
         $user = Auth::user();
         Auth::login($user);
-        return redirect()->route('dashboard-analytics');
+        return redirect()->route('dashboard');
       }
     } else {
       return redirect()->route('auth-login');

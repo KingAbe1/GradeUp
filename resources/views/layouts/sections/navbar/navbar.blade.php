@@ -78,8 +78,7 @@
             </a>
             <ul class="dropdown-menu dropdown-menu-end">
                 <li>
-                    <a class="dropdown-item"
-                        href="#">
+                    <a class="dropdown-item" href="#">
                         <div class="d-flex">
                             <div class="flex-shrink-0 me-3">
                                 <div class="avatar avatar-online">
@@ -91,11 +90,9 @@
                                 <span class="fw-semibold d-block">
                                     @if (Auth::check())
                                         {{ Auth::user()->user_name }}
-                                    @else
-                                        Abel Legesse
                                     @endif
                                 </span>
-                                <small class="text-muted">Admin</small>
+                                <small class="text-muted">{{ Auth::user()->role_id }}</small>
                             </div>
                         </div>
                     </a>

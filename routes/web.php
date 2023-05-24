@@ -18,10 +18,10 @@ use App\Http\Controllers\laravel_example\UserManagement;
 $controller_path = 'App\Http\Controllers';
 
 // Main Page Route
-Route::get('/', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics')->middleware('auth');
-Route::get('/dashboard/analytics', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics')->middleware('auth');
-Route::get('/dashboard/crm', $controller_path . '\dashboard\Crm@index')->name('dashboard-crm')->middleware('auth');
-Route::get('/dashboard/ecommerce', $controller_path . '\dashboard\Ecommerce@index')->name('dashboard-ecommerce')->middleware('auth');
+Route::get('/', $controller_path . '\dashboard\Ecommerce@index')->name('dashboard')->middleware('auth');
+// Route::get('/dashboard/analytics', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics')->middleware('auth');
+// Route::get('/dashboard/crm', $controller_path . '\dashboard\Crm@index')->name('dashboard-crm')->middleware('auth');
+// Route::get('/dashboard/ecommerce', $controller_path . '\dashboard\Ecommerce@index')->name('dashboard-ecommerce')->middleware('auth');
 
 // locale
 Route::get('lang/{locale}', $controller_path . '\language\LanguageController@swap')->middleware('auth');
@@ -197,12 +197,12 @@ Route::get('/maps/leaflet', $controller_path . '\maps\Leaflet@index')->name('map
 Route::get('/laravel/user-management', [UserManagement::class, 'UserManagement'])->name('laravel-example-user-management')->middleware('auth')->middleware('auth');
 Route::resource('/user-list', UserManagement::class)->middleware('auth');
 
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified'
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});
+// Route::middleware([
+//   'auth:sanctum',
+//   config('jetstream.auth_session'),
+//   'verified'
+// ])->group(function () {
+//   Route::get('/dashboard', function () {
+//     return view('dashboard');
+//   })->name('dashboard');
+// });
