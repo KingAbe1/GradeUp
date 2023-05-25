@@ -26,4 +26,19 @@ class UserViewAccount extends Controller
 
     return redirect()->back()->with('password_success', 'Account password changed successfully');
   }
+
+  public function update_info(Request $request, User $id)
+  {
+    $updated_info = $request->all();
+
+    $id->update([
+      'user_name' => $updated_info['modalEditUserName'],
+      'first_name' => $updated_info['modalEditUserFirstName'],
+      'last_name' => $updated_info['modalEditUserLastName'],
+      'email' => $updated_info['modalEditUserEmail'],
+      'phone_number' => $updated_info['modalEditUserPhone']
+    ]);
+
+    return redirect()->back()->with('profile_setting', 'Account updated successfully');
+  }
 }

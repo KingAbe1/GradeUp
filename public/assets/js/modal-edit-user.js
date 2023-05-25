@@ -122,8 +122,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }),
         submitButton: new FormValidation.plugins.SubmitButton(),
         // Submit the form when all fields are valid
-        // defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-        autoFocus: new FormValidation.plugins.AutoFocus()
+        defaultSubmit: new FormValidation.plugins.DefaultSubmit()
+        // autoFocus: new FormValidation.plugins.AutoFocus()
       }
     });
   })();

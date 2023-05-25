@@ -45,6 +45,16 @@
                 timer: 3000
             });
         </script>
+    @elseif(session('profile_setting'))
+        <script>
+            Swal.fire({
+                title: 'Well Done!',
+                text: "{{ session('profile_setting') }}",
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
     @endif
 @endsection
 
@@ -109,10 +119,23 @@
                                 <span class="fw-semibold me-1">Contact:</span>
                                 <span>+251{{ Auth::user()->phone_number }}</span>
                             </li>
-                            <li class="pt-1">
-                                <span class="fw-semibold me-1">Region:</span>
-                                <span>{{ Auth::user()->region ? Auth::user()->region : 'Unknown' }}</span>
-                            </li>
+                            @if (Auth::user()->role_id == 2)
+                                <li class="mb-2 pt-1">
+                                    <span class="fw-semibold me-1">School:</span>
+                                    <span>{{ Auth::user()->school_name }}</span>
+                                </li>
+                                <li class="mb-2 pt-1">
+                                    <span class="fw-semibold me-1">Grade:</span>
+                                    <span>Grade {{ Auth::user()->grade }}</span>
+                                </li>
+                            @endif
+
+                            @if (Auth::user()->role_id != 1)
+                                <li class="pt-1">
+                                    <span class="fw-semibold me-1">Region:</span>
+                                    <span>{{ Auth::user()->region }}</span>
+                                </li>
+                            @endif
                         </ul>
 
                         <div class="d-flex justify-content-center">
@@ -176,44 +199,46 @@
                 </ul>
             @endif
             <!--/ User Pills -->
-            <!-- Change Password -->
-            <div class="card mb-4">
-                <h5 class="card-header">Change Password</h5>
-                <div class="card-body">
-                    <form id="formChangePassword" method="POST" action="{{ route('app-user-update-password') }}"
-                        onsubmit="return false">
-                        @csrf
-                        <div class="alert alert-warning" role="alert">
-                            <h5 class="alert-heading mb-2">Ensure that these requirements are met</h5>
-                            <span>Minimum 8 characters long, uppercase & symbol</span>
-                        </div>
-                        <div class="row">
-                            <div class="mb-3 col-12 col-sm-6 form-password-toggle">
-                                <label class="form-label" for="newPassword">New Password</label>
-                                <div class="input-group input-group-merge">
-                                    <input class="form-control" type="password" id="newPassword" name="newPassword"
-                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
-                                    <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
-                                </div>
+            @if (Auth::user()->role_id == 1)
+                <!-- Change Password -->
+                <div class="card mb-4">
+                    <h5 class="card-header">Change Password</h5>
+                    <div class="card-body">
+                        <form id="formChangePassword" method="POST" action="{{ route('app-user-update-password') }}"
+                            onsubmit="return false">
+                            @csrf
+                            <div class="alert alert-warning" role="alert">
+                                <h5 class="alert-heading mb-2">Ensure that these requirements are met</h5>
+                                <span>Minimum 8 characters long, uppercase & symbol</span>
                             </div>
+                            <div class="row">
+                                <div class="mb-3 col-12 col-sm-6 form-password-toggle">
+                                    <label class="form-label" for="newPassword">New Password</label>
+                                    <div class="input-group input-group-merge">
+                                        <input class="form-control" type="password" id="newPassword" name="newPassword"
+                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                        <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                                    </div>
+                                </div>
 
-                            <div class="mb-3 col-12 col-sm-6 form-password-toggle">
-                                <label class="form-label" for="confirmPassword">Confirm New Password</label>
-                                <div class="input-group input-group-merge">
-                                    <input class="form-control" type="password" name="confirmPassword"
-                                        id="confirmPassword"
-                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
-                                    <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                                <div class="mb-3 col-12 col-sm-6 form-password-toggle">
+                                    <label class="form-label" for="confirmPassword">Confirm New Password</label>
+                                    <div class="input-group input-group-merge">
+                                        <input class="form-control" type="password" name="confirmPassword"
+                                            id="confirmPassword"
+                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                        <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <button type="submit" class="btn btn-primary me-2">Change Password</button>
                                 </div>
                             </div>
-                            <div>
-                                <button type="submit" class="btn btn-primary me-2">Change Password</button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
-            </div>
-            <!--/ Change Password -->
+                <!--/ Change Password -->
+            @endif
             @if (Auth::user()->role_id != 1)
                 <!-- Invoice table -->
                 <div class="card mb-4">
