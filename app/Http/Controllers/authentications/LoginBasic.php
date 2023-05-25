@@ -20,7 +20,7 @@ class LoginBasic extends Controller
   public function check(Request $request)
   {
     $user_input = $request->all();
-    $phone_number = "251" . $user_input['email-username'];
+    $phone_number = $user_input['email-username'];
     $password = $user_input['password'];
 
     $user = User::join('roles', 'users.role_id', 'roles.id')->where('phone_number', $phone_number)->first();

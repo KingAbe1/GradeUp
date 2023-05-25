@@ -165,8 +165,11 @@
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsMobile">Mobile Number</label>
-                                            <input type="text" id="multiStepsMobile" name="multiStepsMobile"
-                                                class="form-control" placeholder="251956395579" />
+                                            <div class="input-group">
+                                                <span class="input-group-text">ET (+251)</span>
+                                                <input type="text" id="multiStepsMobile" name="multiStepsMobile"
+                                                    class="form-control" placeholder="956395579" />
+                                            </div>
                                         </div>
                                         <div class="col-md-6">
                                             <label class="form-label" for="multiStepsSchool">School</label>

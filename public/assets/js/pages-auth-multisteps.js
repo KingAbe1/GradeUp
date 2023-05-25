@@ -191,13 +191,13 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 message: 'Please enter phone number'
               },
               stringLength: {
-                min: 12,
-                max: 12,
-                message: 'mobile number must be 12 digit long'
+                min: 9,
+                max: 9,
+                message: 'mobile number must be 9 digit long'
               },
               regexp: {
-                regexp: /^[2][5][1][0-9]+$/,
-                message: 'The mobile number must start with 251 and can only consist of numbers'
+                regexp: /^9\d{1,}$/,
+                message: 'The mobile number must start with 9 and can only consist of numbers'
               }
             }
           },
