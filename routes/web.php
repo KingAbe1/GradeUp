@@ -19,6 +19,7 @@ $controller_path = 'App\Http\Controllers';
 
 // Main Page Route
 Route::get('/', $controller_path . '\dashboard\Ecommerce@index')->name('dashboard')->middleware('auth');
+
 // Route::get('/dashboard/analytics', $controller_path . '\dashboard\Analytics@index')->name('dashboard-analytics')->middleware('auth');
 // Route::get('/dashboard/crm', $controller_path . '\dashboard\Crm@index')->name('dashboard-crm')->middleware('auth');
 // Route::get('/dashboard/ecommerce', $controller_path . '\dashboard\Ecommerce@index')->name('dashboard-ecommerce')->middleware('auth');
@@ -52,6 +53,10 @@ Route::get('/app/invoice/edit', $controller_path . '\apps\InvoiceEdit@index')->n
 Route::get('/app/invoice/add', $controller_path . '\apps\InvoiceAdd@index')->name('app-invoice-add')->middleware('auth');
 Route::get('/app/user/list', $controller_path . '\apps\UserList@index')->name('app-user-list')->middleware('auth');
 Route::get('/app/user/view/account', $controller_path . '\apps\UserViewAccount@index')->name('app-user-view-account')->middleware('auth');
+
+//Account Setting Password Change
+Route::post('/app/user/view/account', $controller_path . '\apps\UserViewAccount@update_password')->name('app-user-update-password')->middleware('auth');
+
 Route::get('/app/user/view/security', $controller_path . '\apps\UserViewSecurity@index')->name('app-user-view-security')->middleware('auth');
 Route::get('/app/user/view/billing', $controller_path . '\apps\UserViewBilling@index')->name('app-user-view-billing')->middleware('auth');
 Route::get('/app/user/view/notifications', $controller_path . '\apps\UserViewNotifications@index')->name('app-user-view-notifications')->middleware('auth');

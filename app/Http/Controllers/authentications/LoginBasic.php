@@ -28,7 +28,6 @@ class LoginBasic extends Controller
       if (Auth::attempt(['phone_number' => $phone_number, 'password' => $password])) {
         $xuser = Auth::user();
         Auth::login($xuser);
-        // View::share('role_name', $user->name);
         return redirect('/');
       }
     } else {

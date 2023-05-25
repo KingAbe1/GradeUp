@@ -16,9 +16,9 @@
             notEmpty: {
               message: 'Please enter new password'
             },
-            stringLength: {
-              min: 8,
-              message: 'Password must be more than 8 characters'
+            regexp: {
+              regexp: /^(?=.*[A-Z])(?=.*[^\w\s]).{8,}$/,
+              message: 'Minimum 8 characters long, uppercase & symbol'
             }
           }
         },
@@ -33,9 +33,9 @@
               },
               message: 'The password and its confirm are not the same'
             },
-            stringLength: {
-              min: 8,
-              message: 'Password must be more than 8 characters'
+            regexp: {
+              regexp: /^(?=.*[A-Z])(?=.*[^\w\s]).{8,}$/,
+              message: 'Minimum 8 characters long, uppercase & symbol'
             }
           }
         }
@@ -48,8 +48,8 @@
         }),
         submitButton: new FormValidation.plugins.SubmitButton(),
         // Submit the form when all fields are valid
-        // defaultSubmit: new FormValidation.plugins.DefaultSubmit(),
-        autoFocus: new FormValidation.plugins.AutoFocus()
+        defaultSubmit: new FormValidation.plugins.DefaultSubmit()
+        // autoFocus: new FormValidation.plugins.AutoFocus()
       },
       init: instance => {
         instance.on('plugins.message.placed', function (e) {

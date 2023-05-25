@@ -83,6 +83,33 @@ document.addEventListener('DOMContentLoaded', function (e) {
               message: 'The name can only consist of alphabetical, number and space'
             }
           }
+        },
+        modalEditUserEmail: {
+          validators: {
+            notEmpty: {
+              message: 'Please enter your email address'
+            },
+            regexp: {
+              regexp: /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/,
+              message: 'Please enter a valid email address'
+            }
+          }
+        },
+        modalEditUserPhone: {
+          validators: {
+            notEmpty: {
+              message: 'Please enter your phone number'
+            },
+            stringLength: {
+              min: 9,
+              max: 9,
+              message: 'The phone number must equal to 9 digit long'
+            },
+            regexp: {
+              regexp: /^9\d{8}$/,
+              message: 'Phone number starts with 9'
+            }
+          }
         }
       },
       plugins: {
