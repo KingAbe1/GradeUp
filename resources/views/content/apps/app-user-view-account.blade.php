@@ -147,22 +147,68 @@
             </div>
             <!-- /User Card -->
             <!-- Plan Card -->
-            @if (auth()->user()->role_id != 1)
+
+            <!-- /Plan Card -->
+        </div>
+        <!--/ User Sidebar -->
+
+
+        <!-- User Content -->
+        <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
+            <!-- Change Password -->
+            <div class="card mb-4">
+                <h5 class="card-header">Change Password</h5>
+                <div class="card-body">
+                    <form id="formChangePassword" method="POST" action="{{ route('app-user-update-password') }}"
+                        onsubmit="return false">
+                        @csrf
+                        <div class="alert alert-warning" role="alert">
+                            <h5 class="alert-heading mb-2">Ensure that these requirements are met</h5>
+                            <span>Minimum 8 characters long, uppercase & symbol</span>
+                        </div>
+                        <div class="row">
+                            <div class="mb-3 col-12 col-sm-6 form-password-toggle">
+                                <label class="form-label" for="newPassword">New Password</label>
+                                <div class="input-group input-group-merge">
+                                    <input class="form-control" type="password" id="newPassword" name="newPassword"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                    <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 col-12 col-sm-6 form-password-toggle">
+                                <label class="form-label" for="confirmPassword">Confirm New Password</label>
+                                <div class="input-group input-group-merge">
+                                    <input class="form-control" type="password" name="confirmPassword" id="confirmPassword"
+                                        placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
+                                    <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
+                                </div>
+                            </div>
+                            <div>
+                                <button type="submit" class="btn btn-primary me-2">Change Password</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--/ Change Password -->
+            @if (Auth::user()->role_id == 2)
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-start">
-                            <span class="badge bg-label-primary">Standard</span>
+                            <span class="badge bg-label-primary">{{ $current_plans[0]['name'] }}</span>
                             <div class="d-flex justify-content-center">
-                                <sup class="h6 pricing-currency mt-3 mb-0 me-1 text-primary fw-normal">$</sup>
-                                <h1 class="fw-semibold mb-0 text-primary">99</h1>
+                                <sup class="h6 pricing-currency mt-3 mb-0 me-1 text-primary fw-normal">ETB</sup>
+                                <h1 class="fw-semibold mb-0 text-primary">{{ $current_plans[0]['price'] }}</h1>
                                 <sub class="h6 pricing-duration mt-auto mb-2 text-muted fw-normal">/month</sub>
                             </div>
                         </div>
-                        <ul class="ps-3 g-2 my-3">
+                        {{-- <ul class="ps-3 g-2 my-3">
                             <li class="mb-2">10 Users</li>
                             <li class="mb-2">Up to 10 GB storage</li>
                             <li>Basic Support</li>
-                        </ul>
+                        </ul> --}}
+                        <p>{{ $current_plans[0]['description'] }}</p>
                         <div class="d-flex justify-content-between align-items-center mb-1 fw-semibold text-heading">
                             <span>Days</span>
                             <span>65% Completed</span>
@@ -179,85 +225,6 @@
                         </div>
                     </div>
                 </div>
-            @endif
-            <!-- /Plan Card -->
-        </div>
-        <!--/ User Sidebar -->
-
-
-        <!-- User Content -->
-        <div class="col-xl-8 col-lg-7 col-md-7 order-0 order-md-1">
-            <!-- User Pills -->
-            @if (Auth::user()->role_id != 1)
-                <ul class="nav nav-pills flex-column flex-md-row mb-4">
-                    <li class="nav-item"><a class="nav-link active" href="javascript:void(0);"><i
-                                class="ti ti-user-check ti-xs me-1"></i>Account</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('app/user/view/security') }}"><i
-                                class="ti ti-lock ti-xs me-1"></i>Security</a></li>
-                    <li class="nav-item"><a class="nav-link" href="{{ url('app/user/view/billing') }}"><i
-                                class="ti ti-currency-dollar ti-xs me-1"></i>Billing & Plans</a></li>
-                </ul>
-            @endif
-            <!--/ User Pills -->
-            @if (Auth::user()->role_id == 1)
-                <!-- Change Password -->
-                <div class="card mb-4">
-                    <h5 class="card-header">Change Password</h5>
-                    <div class="card-body">
-                        <form id="formChangePassword" method="POST" action="{{ route('app-user-update-password') }}"
-                            onsubmit="return false">
-                            @csrf
-                            <div class="alert alert-warning" role="alert">
-                                <h5 class="alert-heading mb-2">Ensure that these requirements are met</h5>
-                                <span>Minimum 8 characters long, uppercase & symbol</span>
-                            </div>
-                            <div class="row">
-                                <div class="mb-3 col-12 col-sm-6 form-password-toggle">
-                                    <label class="form-label" for="newPassword">New Password</label>
-                                    <div class="input-group input-group-merge">
-                                        <input class="form-control" type="password" id="newPassword" name="newPassword"
-                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
-                                        <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
-                                    </div>
-                                </div>
-
-                                <div class="mb-3 col-12 col-sm-6 form-password-toggle">
-                                    <label class="form-label" for="confirmPassword">Confirm New Password</label>
-                                    <div class="input-group input-group-merge">
-                                        <input class="form-control" type="password" name="confirmPassword"
-                                            id="confirmPassword"
-                                            placeholder="&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;&#xb7;" />
-                                        <span class="input-group-text cursor-pointer"><i class="ti ti-eye-off"></i></span>
-                                    </div>
-                                </div>
-                                <div>
-                                    <button type="submit" class="btn btn-primary me-2">Change Password</button>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div>
-                <!--/ Change Password -->
-            @endif
-            @if (Auth::user()->role_id != 1)
-                <!-- Invoice table -->
-                <div class="card mb-4">
-                    <div class="table-responsive mb-3">
-                        <table class="table datatable-invoice border-top">
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>ID</th>
-                                    <th><i class='ti ti-trending-up'></i></th>
-                                    <th>Total</th>
-                                    <th>Issued Date</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                        </table>
-                    </div>
-                </div>
-                <!-- /Invoice table -->
             @endif
         </div>
         <!--/ User Content -->

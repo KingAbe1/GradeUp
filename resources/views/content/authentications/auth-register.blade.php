@@ -242,7 +242,7 @@
                                                             </span>
                                                         </span>
                                                         <input name="customRadioIcon" class="form-check-input"
-                                                            type="radio" value="{{ $plan->price }}"
+                                                            type="radio" value="{{ $plan->id }}"
                                                             id="{{ $plan->input_id }}" />
                                                     </label>
                                                 </div>

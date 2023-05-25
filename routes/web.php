@@ -60,8 +60,8 @@ Route::post('/app/user/view/account', $controller_path . '\apps\UserViewAccount@
 //Account User Information Password Change
 Route::put('/app/user/view/account/{id}', $controller_path . '\apps\UserViewAccount@update_info')->name('app-user-update-info')->middleware('auth');
 
-// Route::get('/app/user/view/security', $controller_path . '\apps\UserViewSecurity@index')->name('app-user-view-security')->middleware('auth');
-// Route::get('/app/user/view/billing', $controller_path . '\apps\UserViewBilling@index')->name('app-user-view-billing')->middleware('auth');
+Route::get('/app/user/view/security', $controller_path . '\apps\UserViewSecurity@index')->name('app-user-view-security')->middleware('auth');
+Route::get('/app/user/view/billing', $controller_path . '\apps\UserViewBilling@index')->name('app-user-view-billing')->middleware('auth');
 // Route::get('/app/user/view/notifications', $controller_path . '\apps\UserViewNotifications@index')->name('app-user-view-notifications')->middleware('auth');
 // Route::get('/app/user/view/connections', $controller_path . '\apps\UserViewConnections@index')->name('app-user-view-connections')->middleware('auth');
 Route::get('/app/access-roles', $controller_path . '\apps\AccessRoles@index')->name('app-access-roles')->middleware('auth');

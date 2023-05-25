@@ -22,7 +22,7 @@ return new class extends Migration
       $table->string('school_name')->nullable();
       $table->string('grade')->nullable();
       $table->string('region')->nullable();
-      $table->string('plan')->nullable();
+      $table->foreignId('plan')->constrained('plans', 'id')->nullable();
       $table->string('plan_trail')->nullable();
       $table->enum('status', ['0', '1']);
       $table->foreignId('role_id')->constrained('roles', 'id');
