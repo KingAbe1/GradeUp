@@ -36,7 +36,7 @@
                         <div class="content-left">
                             <span>Total Users</span>
                             <div class="d-flex align-items-center my-1">
-                                <h4 class="mb-0 me-2">21,459</h4>
+                                <h4 class="mb-0 me-2">{{ count($total_users) }}</h4>
                                 {{-- <span class="text-success">(+29%)</span> --}}
                             </div>
                             {{-- <span>Total Users</span> --}}
@@ -53,15 +53,15 @@
                 <div class="card-body">
                     <div class="d-flex align-items-start justify-content-between">
                         <div class="content-left">
-                            <span>Active Users</span>
+                            <span>Teachers</span>
                             <div class="d-flex align-items-center my-1">
-                                <h4 class="mb-0 me-2">19,860</h4>
+                                <h4 class="mb-0 me-2">{{ count($teachers) }}</h4>
                                 {{-- <span class="text-danger">(-14%)</span> --}}
                             </div>
                             {{-- <span>Last week analytics</span> --}}
                         </div>
-                        <span class="badge bg-label-success rounded p-2">
-                            <i class="ti ti-user-check ti-sm"></i>
+                        <span class="badge bg-label-primary rounded p-2">
+                            <i class="ti ti-user ti-sm"></i>
                         </span>
                     </div>
                 </div>
@@ -72,15 +72,15 @@
                 <div class="card-body">
                     <div class="d-flex align-items-start justify-content-between">
                         <div class="content-left">
-                            <span>Inactive Users</span>
+                            <span>Students</span>
                             <div class="d-flex align-items-center my-1">
-                                <h4 class="mb-0 me-2">4,567</h4>
+                                <h4 class="mb-0 me-2">{{ count($students) }}</h4>
                                 {{-- <span class="text-success">(+18%)</span> --}}
                             </div>
                             {{-- <span>Last week analytics </span> --}}
                         </div>
-                        <span class="badge bg-label-danger rounded p-2">
-                            <i class="ti ti-user-plus ti-sm"></i>
+                        <span class="badge bg-label-primary rounded p-2">
+                            <i class="ti ti-school ti-sm"></i>
                         </span>
                     </div>
                 </div>
@@ -92,15 +92,15 @@
                 <div class="card-body">
                     <div class="d-flex align-items-start justify-content-between">
                         <div class="content-left">
-                            <span>Pending Users</span>
+                            <span>Newcomer</span>
                             <div class="d-flex align-items-center my-1">
-                                <h4 class="mb-0 me-2">237</h4>
+                                <h4 class="mb-0 me-2">{{ count($newcomers) }}</h4>
                                 {{-- <span class="text-success">(+42%)</span> --}}
                             </div>
                             {{-- <span>Last week analytics</span> --}}
                         </div>
-                        <span class="badge bg-label-warning rounded p-2">
-                            <i class="ti ti-user-exclamation ti-sm"></i>
+                        <span class="badge bg-label-success rounded p-2">
+                            <i class="ti ti-user-check ti-sm"></i>
                         </span>
                     </div>
                 </div>
@@ -130,6 +130,11 @@
                         <th>Actions</th>
                     </tr>
                 </thead>
+                <tbody>
+                    @foreach ($total_users as $total_user)
+                        <tr></tr>
+                    @endforeach
+                </tbody>
             </table>
         </div>
         <!-- Offcanvas to add new user -->
