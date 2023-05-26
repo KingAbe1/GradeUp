@@ -1054,7 +1054,7 @@
                                 <div class="col-12 col-sm-4 col-md-12 col-lg-4">
                                     <div class="mt-lg-4 mt-lg-2 mb-lg-4 mb-2 pt-1">
                                         <h1 class="mb-0 text-danger">12</h1>
-                                        <p class="mb-0">Days left before subscription expires</p>
+                                        <p class="mb-0">Days left before subscription plan expires</p>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-8">
@@ -1072,16 +1072,6 @@
                                 <h5 class="mb-0">Free 14 Days Trial Tracker</h5>
                                 <small class="text-muted">Account created on 13 Mar, 2023</small>
                             </div>
-                            <div class="dropdown">
-                                <button class="btn p-0" type="button" id="supportTrackerMenu" data-bs-toggle="dropdown"
-                                    aria-haspopup="true" aria-expanded="false">
-                                    <i class="ti ti-dots-vertical ti-sm text-muted"></i>
-                                </button>
-                                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="supportTrackerMenu">
-                                    <a class="dropdown-item" href="javascript:void(0);">View More</a>
-                                    <a class="dropdown-item" href="javascript:void(0);">Delete</a>
-                                </div>
-                            </div>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -1090,7 +1080,7 @@
                                         <h1 id="day-left"
                                             class="mb-0 {{ $current_plans[0]['plan_trail'] < 5 ? 'text-danger' : '' }}">
                                             {{ $current_plans[0]['plan_trail'] }}</h1>
-                                        <p class="mb-0">Days left before subscription expires</p>
+                                        <p class="mb-0">Days left before free trail expires</p>
                                     </div>
                                 </div>
                                 <div class="col-12 col-sm-8 col-md-12 col-lg-8">
