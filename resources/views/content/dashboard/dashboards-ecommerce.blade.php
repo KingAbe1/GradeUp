@@ -1021,7 +1021,7 @@
                                 <div class="badge rounded-pill p-2 bg-label-primary mb-3"><i
                                         class="ti ti-users ti-sm"></i>
                                 </div>
-                                <h5 class="card-title mb-3">97.8k</h5>
+                                <h5 class="card-title mb-3">{{ count($connects) }}</h5>
                                 <small>Connects</small>
                                 <br>
                                 <small class="text-muted">Updated 1 second ago</small>
@@ -1096,149 +1096,35 @@
                 <div class="card h-100">
                     <div class="card-header d-flex justify-content-between">
                         <h5 class="card-title m-0 me-2">Recent Transaction</h5>
-                        {{-- <div class="dropdown">
-                            <button class="btn p-0" type="button" id="teamMemberList" data-bs-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false">
-                                <i class="ti ti-dots-vertical ti-sm text-muted"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="teamMemberList">
-                                <a class="dropdown-item" href="javascript:void(0);">Download</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
-                                <a class="dropdown-item" href="javascript:void(0);">Share</a>
-                            </div>
-                        </div> --}}
                     </div>
                     <div class="table-responsive">
                         <table class="table table-borderless border-top">
                             <thead class="border-bottom">
                                 <tr>
-                                    <th>CARD</th>
+                                    <th>#</th>
+                                    <th>Transaction ID</th>
                                     <th>DATE</th>
                                     <th>STATUS</th>
                                     <th>AMOUNT</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="me-3">
-                                                <img src="{{ asset('assets/img/icons/payments/visa-img.png') }}"
-                                                    alt="Visa" height="30">
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <p class="mb-0 fw-semibold">*4230</p><small
-                                                    class="text-muted">Credit</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-0 fw-semibold">Sent</p>
-                                            <small class="text-muted text-nowrap">17 Mar 2022</small>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-success">Verified</span></td>
-                                    <td>
-                                        <p class="mb-0 fw-semibold">+$1,678</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="me-3">
-                                                <img src="{{ asset('assets/img/icons/payments/master-card-img.png') }}"
-                                                    alt="Visa" height="30">
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <p class="mb-0 fw-semibold">*5578</p><small
-                                                    class="text-muted">Credit</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-0 fw-semibold">Sent</p>
-                                            <small class="text-muted text-nowrap">12 Feb 2022</small>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-danger">Rejected</span></td>
-                                    <td>
-                                        <p class="mb-0 fw-semibold">-$839</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="me-3">
-                                                <img src="{{ asset('assets/img/icons/payments/american-express-img.png') }}"
-                                                    alt="Visa" height="30">
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <p class="mb-0 fw-semibold">*4567</p><small
-                                                    class="text-muted">Credit</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-0 fw-semibold">Sent</p>
-                                            <small class="text-muted text-nowrap">28 Feb 2022</small>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-success">Verified</span></td>
-                                    <td>
-                                        <p class="mb-0 fw-semibold">+$435</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="me-3">
-                                                <img src="{{ asset('assets/img/icons/payments/visa-img.png') }}"
-                                                    alt="Visa" height="30">
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <p class="mb-0 fw-semibold">*5699</p><small
-                                                    class="text-muted">Credit</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-0 fw-semibold">Sent</p>
-                                            <small class="text-muted text-nowrap">8 Jan 2022</small>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-secondary">Pending</span></td>
-                                    <td>
-                                        <p class="mb-0 fw-semibold">+$2,345</p>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <div class="d-flex justify-content-start align-items-center">
-                                            <div class="me-3">
-                                                <img src="{{ asset('assets/img/icons/payments/visa-img.png') }}"
-                                                    alt="Visa" height="30">
-                                            </div>
-                                            <div class="d-flex flex-column">
-                                                <p class="mb-0 fw-semibold">*5699</p><small
-                                                    class="text-muted">Credit</small>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div class="d-flex flex-column">
-                                            <p class="mb-0 fw-semibold">Sent</p>
-                                            <small class="text-muted text-nowrap">8 Jan 2022</small>
-                                        </div>
-                                    </td>
-                                    <td><span class="badge bg-label-danger">Rejected</span></td>
-                                    <td>
-                                        <p class="mb-0 fw-semibold">-$234</p>
-                                    </td>
-                                </tr>
+                                @if (count($transactions) == 0)
+                                    <tr>
+                                        <td style="padding-top: 2%" colspan='4' class="text-center">No Transaction
+                                            Made</td>
+                                    </tr>
+                                @else
+                                    @foreach ($transactions as $transaction)
+                                        <tr>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                            <td></td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             </tbody>
                         </table>
                     </div>
