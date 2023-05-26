@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\authentications;
 
+use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -23,9 +24,28 @@ class LoginBasic extends Controller
     $phone_number = $user_input['email-username'];
     $password = $user_input['password'];
 
-    $user = User::join('roles', 'users.role_id', 'roles.id')->where('phone_number', $phone_number)->first();
+    $user = User::where('phone_number', $phone_number)->select('*')->first();
     if ($user && Hash::check($password, $user->password)) {
       if (Auth::attempt(['phone_number' => $phone_number, 'password' => $password])) {
+
+        $get_created_date = User::where('id', $user->id)->select('created_at')->get()->toArray();
+        $date_to_be_expired = Carbon::parse($get_created_date[0]['created_at']);
+        $date_to_be_expired->addDays(14);
+
+        $date_diff = $date_to_be_expired->diffInDays($get_created_date[0]['created_at']);
+
+        if ($date_diff == 0) {
+          User::where('id', $user->id)->update([
+            'plan_trail' => null
+          ]);
+        } else {
+          if ($user->plan_trail != $date_diff) {
+            User::where('id', $user->id)->update([
+              'plan_trail' => $date_diff
+            ]);
+          }
+        }
+
         $xuser = Auth::user();
         Auth::login($xuser);
         return redirect('/');

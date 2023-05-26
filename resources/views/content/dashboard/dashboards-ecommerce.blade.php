@@ -714,7 +714,7 @@
 
                 // Support Tracker - Radial Bar Chart
                 // --------------------------------------------------------------------
-                let value = (document.querySelector('#day-left').innerText / 15) * 100;
+                let value = Math.round((document.querySelector('#day-left').innerText / 14) * 100);
                 console.log(value);
                 const supportTrackerEl = document.querySelector('#supportTracker'),
                     supportTrackerOptions = {
