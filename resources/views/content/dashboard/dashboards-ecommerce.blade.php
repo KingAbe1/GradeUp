@@ -1070,7 +1070,8 @@
                         <div class="card-header d-flex justify-content-between pb-0">
                             <div class="card-title mb-0">
                                 <h5 class="mb-0">Free 14 Days Trial Tracker</h5>
-                                <small class="text-muted">Account created on 13 Mar, 2023</small>
+                                <small class="text-muted">Account created on
+                                    {{ date('d M, Y', strtotime($current_plans[0]['created_at'])) }}</small>
                             </div>
                         </div>
                         <div class="card-body">
@@ -1094,8 +1095,8 @@
             <div class="col-lg-12 mb-4 mb-lg-0">
                 <div class="card h-100">
                     <div class="card-header d-flex justify-content-between">
-                        <h5 class="card-title m-0 me-2">Last Transaction</h5>
-                        <div class="dropdown">
+                        <h5 class="card-title m-0 me-2">Recent Transaction</h5>
+                        {{-- <div class="dropdown">
                             <button class="btn p-0" type="button" id="teamMemberList" data-bs-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false">
                                 <i class="ti ti-dots-vertical ti-sm text-muted"></i>
@@ -1105,7 +1106,7 @@
                                 <a class="dropdown-item" href="javascript:void(0);">Refresh</a>
                                 <a class="dropdown-item" href="javascript:void(0);">Share</a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="table-responsive">
                         <table class="table table-borderless border-top">
@@ -1114,7 +1115,7 @@
                                     <th>CARD</th>
                                     <th>DATE</th>
                                     <th>STATUS</th>
-                                    <th>TREND</th>
+                                    <th>AMOUNT</th>
                                 </tr>
                             </thead>
                             <tbody>
