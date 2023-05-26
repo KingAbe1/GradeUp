@@ -192,7 +192,7 @@
                 </div>
             </div>
             <!--/ Change Password -->
-            @if (Auth::user()->role_id == 2)
+            @if (Auth::user()->role_id == 2 && $current_plans[0]['name'] == null)
                 <div class="card mb-4">
                     <div class="card-body">
                         <div class="d-flex justify-content-between align-items-start">
