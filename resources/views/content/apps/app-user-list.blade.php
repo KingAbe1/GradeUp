@@ -155,24 +155,20 @@
                                     </div>
                                 </div>
                             </td>
-                            @if ($total_user->role_name == 'Student')
-                                <td><span class='text-truncate d-flex align-items-center'><span
-                                            class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2"><i
-                                                class="fa-solid fa-graduation-cap fa-2xl"></i></span>Student</span>
-                                </td>
-                            @elseif($total_user->role_name == 'Teacher')
-                                <td><span class='text-truncate d-flex align-items-center'><span
-                                            class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2"><i
-                                                class="fa-solid fa-person-chalkboard"></i></span>Teacher</span>
-                                </td>
-                            @endif
-                            <td><span class="fw-semibold">{{ $total_user->plan_name }}</span></td>
+                            <td>
+                                @if ($total_user->role_name == 'Student')
+                                    Student
+                                @elseif($total_user->role_name == 'Teacher')
+                                    Teacher
+                                @endif
+                            </td>
+                            <td>{{ $total_user->plan_name }}</td>
                             <td>Chapa</td>
                             <td>
                                 @if ($total_user->status == 1)
-                                    <span class="badge bg-label-success text-success text-capitalized">Active</span>
+                                    Active
                                 @else
-                                    <span class="badge bg-label-danger text-danger text-capitalized">Inactive</span>
+                                    Inactive
                                 @endif
                             </td>
                             <td>

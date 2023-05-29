@@ -28,16 +28,7 @@ $(function () {
       3: { title: 'Inactive', class: 'bg-label-secondary' }
     };
 
-  // if (select2.length) {
-  //   var $this = select2;
-  //   $this.wrap('<div class="position-relative"></div>').select2({
-  //     placeholder: 'Select Country',
-  //     dropdownParent: $this.parent()
-  //   });
-  // }
-
   // Users datatable
-  console.log(dt_user_table.length);
   if (dt_user_table.length) {
     var dt_user = dt_user_table.DataTable({
       order: [[1, 'desc']],
@@ -204,6 +195,7 @@ $(function () {
           .columns(2)
           .every(function () {
             var column = this;
+            // console.log(column);
             var select = $(
               '<select id="UserRole" class="form-select text-capitalize"><option value=""> Select Role </option></select>'
             )
@@ -217,6 +209,7 @@ $(function () {
               .unique()
               .sort()
               .each(function (d, j) {
+                // console.log(d);
                 select.append('<option value="' + d + '">' + d + '</option>');
               });
           });
@@ -259,13 +252,13 @@ $(function () {
               .unique()
               .sort()
               .each(function (d, j) {
-                select.append(
-                  '<option value="' +
-                    statusObj[d].title +
-                    '" class="text-capitalize">' +
-                    statusObj[d].title +
-                    '</option>'
-                );
+                // select.append(
+                //   '<option value="' +
+                //     statusObj[d].title +
+                //     '" class="text-capitalize">' +
+                //     statusObj[d].title +
+                //     '</option>'
+                // );
               });
           });
       }
