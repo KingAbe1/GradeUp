@@ -121,7 +121,7 @@
             <table class="datatables-users table border-top">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>#</th>
                         <th>User</th>
                         <th>Role</th>
                         <th>Plan</th>
@@ -131,8 +131,66 @@
                     </tr>
                 </thead>
                 <tbody>
+                    @php
+                        $id = 1;
+                    @endphp
                     @foreach ($total_users as $total_user)
-                        <tr></tr>
+                        <tr>
+                            <td>{{ $id }}</td>
+                            <td>
+                                <div class="d-flex justify-content-start align-items-center user-name">
+                                    <div class="avatar-wrapper">
+                                        <div class="avatar avatar-sm me-3">
+                                            <img src="{{ $total_user->profile_photo_url }}" alt="Avatar"
+                                                class="rounded-circle">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <a href="" class="text-body text-truncate"><span class="fw-semibold">
+                                                {{ $total_user->first_name }} {{ $total_user->last_name }}
+                                            </span></a>
+                                        <small class="text-muted">
+                                            {{ $total_user->email }}
+                                        </small>
+                                    </div>
+                                </div>
+                            </td>
+                            @if ($total_user->role_name == 'Student')
+                                <td><span class='text-truncate d-flex align-items-center'><span
+                                            class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2"><i
+                                                class="fa-solid fa-graduation-cap fa-2xl"></i></span>Student</span>
+                                </td>
+                            @elseif($total_user->role_name == 'Teacher')
+                                <td><span class='text-truncate d-flex align-items-center'><span
+                                            class="badge badge-center rounded-pill bg-label-warning w-px-30 h-px-30 me-2"><i
+                                                class="fa-solid fa-person-chalkboard"></i></span>Teacher</span>
+                                </td>
+                            @endif
+                            <td><span class="fw-semibold">{{ $total_user->plan_name }}</span></td>
+                            <td>Chapa</td>
+                            <td>
+                                @if ($total_user->status == 1)
+                                    <span class="badge bg-label-success text-success text-capitalized">Active</span>
+                                @else
+                                    <span class="badge bg-label-danger text-danger text-capitalized">Inactive</span>
+                                @endif
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <a href="javascript:;" class="text-body delete-record"><i
+                                            class="ti ti-trash ti-sm mx-2"></i></a>
+                                    <a href="javascript:;" class="text-body dropdown-toggle hide-arrow"
+                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical ti-sm mx-1"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-end m-0">
+                                        <a href="" class="dropdown-item">View</a>
+                                        <a href="javascript:;" class="dropdown-item">Suspend</a>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                        @php
+                            $id++;
+                        @endphp
                     @endforeach
                 </tbody>
             </table>
