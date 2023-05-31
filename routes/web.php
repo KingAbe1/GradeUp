@@ -46,12 +46,18 @@ Route::get('lang/{locale}', $controller_path . '\language\LanguageController@swa
 Route::get('/app/chat', $controller_path . '\apps\Chat@index')->name('app-chat')->middleware('auth');
 // Route::get('/app/calendar', $controller_path . '\apps\Calendar@index')->name('app-calendar')->middleware('auth');
 // Route::get('/app/kanban', $controller_path . '\apps\Kanban@index')->name('app-kanban')->middleware('auth');
+
+//Get all users invoice superadmin
 Route::get('/app/invoice/list', $controller_path . '\apps\InvoiceList@index')->name('app-invoice-list')->middleware('auth');
 Route::get('/app/invoice/preview', $controller_path . '\apps\InvoicePreview@index')->name('app-invoice-preview')->middleware('auth');
 Route::get('/app/invoice/print', $controller_path . '\apps\InvoicePrint@index')->name('app-invoice-print')->middleware('auth');
 Route::get('/app/invoice/edit', $controller_path . '\apps\InvoiceEdit@index')->name('app-invoice-edit')->middleware('auth');
 Route::get('/app/invoice/add', $controller_path . '\apps\InvoiceAdd@index')->name('app-invoice-add')->middleware('auth');
+
+//Get all registred users
 Route::get('/app/user/list', $controller_path . '\apps\UserList@index')->name('app-user-list')->middleware('auth');
+//Update status of specific user
+Route::get('/app/user/list/{id}', $controller_path . '\apps\UserList@update')->name('app-user-update')->middleware('auth');
 
 //Get signed in user info's
 Route::get('/app/user/view/account', $controller_path . '\apps\UserViewAccount@index')->name('app-user-view-account')->middleware('auth');
@@ -68,15 +74,15 @@ Route::get('/app/access-roles', $controller_path . '\apps\AccessRoles@index')->n
 Route::get('/app/access-permission', $controller_path . '\apps\AccessPermission@index')->name('app-access-permission')->middleware('auth');
 
 // pages
-// Route::get('/pages/profile-user', $controller_path . '\pages\UserProfile@index')->name('pages-profile-user')->middleware('auth');
-// Route::get('/pages/profile-teams', $controller_path . '\pages\UserTeams@index')->name('pages-profile-teams')->middleware('auth');
-// Route::get('/pages/profile-projects', $controller_path . '\pages\UserProjects@index')->name('pages-profile-projects')->middleware('auth');
-// Route::get('/pages/profile-connections', $controller_path . '\pages\UserConnections@index')->name('pages-profile-connections')->middleware('auth');
-// Route::get('/pages/account-settings-account', $controller_path . '\pages\AccountSettingsAccount@index')->name('pages-account-settings-account')->middleware('auth');
-// Route::get('/pages/account-settings-security', $controller_path . '\pages\AccountSettingsSecurity@index')->name('pages-account-settings-security')->middleware('auth');
-// Route::get('/pages/account-settings-billing', $controller_path . '\pages\AccountSettingsBilling@index')->name('pages-account-settings-billing')->middleware('auth');
-// Route::get('/pages/account-settings-notifications', $controller_path . '\pages\AccountSettingsNotifications@index')->name('pages-account-settings-notifications')->middleware('auth');
-// Route::get('/pages/account-settings-connections', $controller_path . '\pages\AccountSettingsConnections@index')->name('pages-account-settings-connections')->middleware('auth');
+Route::get('/pages/profile-user', $controller_path . '\pages\UserProfile@index')->name('pages-profile-user')->middleware('auth');
+Route::get('/pages/profile-teams', $controller_path . '\pages\UserTeams@index')->name('pages-profile-teams')->middleware('auth');
+Route::get('/pages/profile-projects', $controller_path . '\pages\UserProjects@index')->name('pages-profile-projects')->middleware('auth');
+Route::get('/pages/profile-connections', $controller_path . '\pages\UserConnections@index')->name('pages-profile-connections')->middleware('auth');
+Route::get('/pages/account-settings-account', $controller_path . '\pages\AccountSettingsAccount@index')->name('pages-account-settings-account')->middleware('auth');
+Route::get('/pages/account-settings-security', $controller_path . '\pages\AccountSettingsSecurity@index')->name('pages-account-settings-security')->middleware('auth');
+Route::get('/pages/account-settings-billing', $controller_path . '\pages\AccountSettingsBilling@index')->name('pages-account-settings-billing')->middleware('auth');
+Route::get('/pages/account-settings-notifications', $controller_path . '\pages\AccountSettingsNotifications@index')->name('pages-account-settings-notifications')->middleware('auth');
+Route::get('/pages/account-settings-connections', $controller_path . '\pages\AccountSettingsConnections@index')->name('pages-account-settings-connections')->middleware('auth');
 // Route::get('/pages/faq', $controller_path . '\pages\Faq@index')->name('pages-faq')->middleware('auth');
 // Route::get('/pages/help-center-landing', $controller_path . '\pages\HelpCenterLanding@index')->name('pages-help-center-landing')->middleware('auth');
 // Route::get('/pages/help-center-categories', $controller_path . '\pages\HelpCenterCategories@index')->name('pages-help-center-categories')->middleware('auth');

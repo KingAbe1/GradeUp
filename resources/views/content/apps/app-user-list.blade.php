@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-responsive-bs5/responsive.bootstrap5.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-buttons-bs5/buttons.bootstrap5.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/select2/select2.css') }}" />
+    <link rel="stylesheet" href="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.css') }}" />
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/formvalidation/dist/css/formValidation.min.css') }}" />
 
 @endsection
@@ -15,6 +16,7 @@
     <script src="{{ asset('assets/vendor/libs/moment/moment.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/datatables-bs5/datatables-bootstrap5.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/select2/select2.js') }}"></script>
+    <script src="{{ asset('assets/vendor/libs/sweetalert2/sweetalert2.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/FormValidation.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/Bootstrap5.min.js') }}"></script>
     <script src="{{ asset('assets/vendor/libs/formvalidation/dist/js/plugins/AutoFocus.min.js') }}"></script>
@@ -24,6 +26,17 @@
 
 @section('page-script')
     <script src="{{ asset('assets/js/app-user-list.js') }}"></script>
+    @if (session('user_status'))
+        <script>
+            Swal.fire({
+                title: 'Well Done!',
+                text: "{{ session('user_status') }}",
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 3000
+            });
+        </script>
+    @endif
 @endsection
 
 @section('content')
@@ -175,14 +188,23 @@
                             </td>
                             <td>
                                 <div class="d-flex align-items-center">
-                                    <a href="javascript:;" class="text-body delete-record"><i
-                                            class="ti ti-trash ti-sm mx-2"></i></a>
-                                    <a href="javascript:;" class="text-body dropdown-toggle hide-arrow"
-                                        data-bs-toggle="dropdown"><i class="ti ti-dots-vertical ti-sm mx-1"></i></a>
-                                    <div class="dropdown-menu dropdown-menu-end m-0">
-                                        <a href="" class="dropdown-item">View</a>
-                                        <a href="javascript:;" class="dropdown-item">Suspend</a>
-                                    </div>
+                                    <span data-bs-toggle='tooltip' data-bs-html='true' title='View Profile'>
+                                        <a href="/pages/profile-user" class="text-body  view-record"><i
+                                                class="ti ti-eye mx-2"></i></a>
+                                    </span>
+                                    @if ($total_user->status == 1)
+                                        <a href="/app/user/list/{{ Auth::user()->id }}" class="text-body suspend-record">
+                                            <span data-bs-toggle='tooltip' data-bs-html='true' title='Ban'>
+                                                <i class="fa-solid fa-ban mt-2"></i>
+                                            </span>
+                                        </a>
+                                    @else
+                                        <a href="/app/user/list/{{ Auth::user()->id }}" class="text-body activate-record">
+                                            <span data-bs-toggle='tooltip' data-bs-html='true' title='Activate'>
+                                                <i class="fa-solid fa-check mt-2"></i>
+                                            </span>
+                                        </a>
+                                    @endif
                                 </div>
                             </td>
                         </tr>

@@ -17,4 +17,21 @@ class UserList extends Controller
       'newcomers' => User::where('role_id', '!=', 1)->where('created_at', now()->format('Y-m-d'))->get()->toArray()
     ]);
   }
+
+  public function update(User $id)
+  {
+    // dd($id->status);
+
+    if ($id->status == '1') {
+      User::where('id', $id->id)->update([
+        'status' => '0'
+      ]);
+    } else {
+      User::where('id', $id->id)->update([
+        'status' => '1'
+      ]);
+    }
+
+    return redirect()->back()->with('user_status', 'User status changed successfully');
+  }
 }
