@@ -8,7 +8,7 @@
     },
     {
       "url": "app/user/list",
-      "name": "View Users",
+      "name": "Manage Users",
       "icon": "menu-icon tf-icons ti ti-users",
       "slug": "app-user-list"
     },
@@ -20,7 +20,7 @@
     },
     {
       "url": "app/invoice/list",
-      "name": "Invoice",
+      "name": "Manage Invoice",
       "icon": "menu-icon tf-icons ti ti-file-dollar",
       "slug": "app-invoice-list"
     },

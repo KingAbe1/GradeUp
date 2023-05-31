@@ -19,14 +19,13 @@ $(function () {
   }
 
   // Variable declaration for table
-  var dt_user_table = $('.datatables-users'),
-    select2 = $('.select2'),
-    userView = baseUrl + 'app/user/view/account',
-    statusObj = {
-      1: { title: 'Pending', class: 'bg-label-warning' },
-      2: { title: 'Active', class: 'bg-label-success' },
-      3: { title: 'Inactive', class: 'bg-label-secondary' }
-    };
+  var dt_user_table = $('.datatables-users');
+  // select2 = $('.select2'),
+  // userView = baseUrl + 'app/user/view/account',
+  // statusObj = {
+  //   1: { title: 'Active', class: 'bg-label-success' },
+  //   2: { title: 'Inactive', class: 'bg-label-secondary' }
+  // };
 
   // Users datatable
   if (dt_user_table.length) {
@@ -67,7 +66,7 @@ $(function () {
                     var result = '';
                     $.each(el, function (index, item) {
                       if (item.classList !== undefined && item.classList.contains('user-name')) {
-                        result = result + item.lastChild.firstChild.textContent;
+                        result = result + item.lastElementChild.firstElementChild.textContent.trim();
                       } else if (item.innerText === undefined) {
                         result = result + item.textContent;
                       } else result = result + item.innerText;
@@ -104,7 +103,7 @@ $(function () {
                     var result = '';
                     $.each(el, function (index, item) {
                       if (item.classList !== undefined && item.classList.contains('user-name')) {
-                        result = result + item.lastChild.firstChild.textContent;
+                        result = result + item.lastElementChild.firstElementChild.textContent.trim();
                       } else if (item.innerText === undefined) {
                         result = result + item.textContent;
                       } else result = result + item.innerText;
@@ -128,7 +127,7 @@ $(function () {
                     var result = '';
                     $.each(el, function (index, item) {
                       if (item.classList !== undefined && item.classList.contains('user-name')) {
-                        result = result + item.lastChild.firstChild.textContent;
+                        result = result + item.lastElementChild.firstElementChild.textContent.trim();
                       } else if (item.innerText === undefined) {
                         result = result + item.textContent;
                       } else result = result + item.innerText;
@@ -152,7 +151,7 @@ $(function () {
                     var result = '';
                     $.each(el, function (index, item) {
                       if (item.classList !== undefined && item.classList.contains('user-name')) {
-                        result = result + item.lastChild.firstChild.textContent;
+                        result = result + item.lastElementChild.firstElementChild.textContent.trim();
                       } else if (item.innerText === undefined) {
                         result = result + item.textContent;
                       } else result = result + item.innerText;
@@ -176,7 +175,7 @@ $(function () {
                     var result = '';
                     $.each(el, function (index, item) {
                       if (item.classList !== undefined && item.classList.contains('user-name')) {
-                        result = result + item.lastChild.firstChild.textContent;
+                        result = result + item.lastElementChild.firstElementChild.textContent.trim();
                       } else if (item.innerText === undefined) {
                         result = result + item.textContent;
                       } else result = result + item.innerText;
@@ -209,7 +208,6 @@ $(function () {
               .unique()
               .sort()
               .each(function (d, j) {
-                // console.log(d);
                 select.append('<option value="' + d + '">' + d + '</option>');
               });
           });
@@ -236,7 +234,7 @@ $(function () {
           });
         // Adding status filter once table initialized
         this.api()
-          .columns(5)
+          .columns(6)
           .every(function () {
             var column = this;
             var select = $(
@@ -252,13 +250,8 @@ $(function () {
               .unique()
               .sort()
               .each(function (d, j) {
-                // select.append(
-                //   '<option value="' +
-                //     statusObj[d].title +
-                //     '" class="text-capitalize">' +
-                //     statusObj[d].title +
-                //     '</option>'
-                // );
+                console.log(d);
+                select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
               });
           });
       }

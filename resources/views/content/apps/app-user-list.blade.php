@@ -1,6 +1,6 @@
 @extends('layouts/layoutMaster')
 
-@section('title', 'View Users')
+@section('title', 'Manage Users')
 
 @section('vendor-style')
     <link rel="stylesheet" href="{{ asset('assets/vendor/libs/datatables-bs5/datatables.bootstrap5.css') }}">
@@ -124,6 +124,7 @@
                         <th>#</th>
                         <th>User</th>
                         <th>Role</th>
+                        <th>Trail Peroid</th>
                         <th>Plan</th>
                         <th>Billing</th>
                         <th>Status</th>
@@ -162,6 +163,7 @@
                                     Teacher
                                 @endif
                             </td>
+                            <td>{{ $total_user->trail ? 'Yes' : 'No' }}</td>
                             <td>{{ $total_user->plan_name }}</td>
                             <td>Chapa</td>
                             <td>
