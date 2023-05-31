@@ -20,7 +20,7 @@
 
 @section('content')
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">Invoice /</span> List
+        <span class="text-muted fw-light">Manage Invoice</span>
     </h4>
 
     <!-- Invoice List Table -->
@@ -29,17 +29,45 @@
             <table class="invoice-list-table table border-top">
                 <thead>
                     <tr>
-                        <th></th>
+                        <th>#</th>
                         <th>#ID</th>
-                        <th><i class='ti ti-trending-up'></i></th>
                         <th>Client</th>
-                        <th>Total</th>
+                        <th>Plan</th>
                         <th class="text-truncate">Issued Date</th>
-                        <th>Balance</th>
                         <th>Invoice Status</th>
-                        <th class="cell-fit">Actions</th>
+                        <th>Actions</th>
                     </tr>
                 </thead>
+                <tbody>
+                    @php
+                        $id = 1;
+                    @endphp
+                    @foreach ($invoices as $invoice)
+                        <tr>
+                            <td>{{ $id }}</td>
+                            <td><a href="#">#{{ $invoice->id }}</a></td>
+                            <td>{{ $invoice->first_name }} {{ $invoice->last_name }}</td>
+                            <td>{{ $invoice->plan_name }}</td>
+                            <td>{{ date('d M, Y', strtotime($invoice->created_date)) }}</td>
+                            <td>
+                                <span data-bs-toggle='tooltip' data-bs-html='true' title='Fully Paid'>
+                                    <span class="badge badge-center rounded-pill bg-label-success w-px-30 h-px-30">
+                                        <i class="fa-solid fa-circle-check"></i>
+                                    </span>
+                                </span>
+                            </td>
+                            <td>
+                                <div class="d-flex align-items-center">
+                                    <a href="#" data-bs-toggle="tooltip" class="text-body" data-bs-placement="top"
+                                        title="Preview Invoice"><i class="ti ti-eye mx-2 ti-sm"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        @php
+                            $id;
+                        @endphp
+                    @endforeach
+                </tbody>
             </table>
         </div>
     </div>
