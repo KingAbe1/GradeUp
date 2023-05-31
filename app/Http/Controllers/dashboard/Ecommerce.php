@@ -18,7 +18,7 @@ class Ecommerce extends Controller
     return view('content.dashboard.dashboards-ecommerce', [
       'current_plans' => $current_plans,
       'connects' => Connects::where('student_id', Auth::user()->id)->get()->toArray(),
-      'transactions' => Transaction::where('user_id', Auth::user()->id)->get()->toArray()
+      'transactions' => Transaction::join('plans', 'transactions.plan_id', 'plans.id')->where('user_id', Auth::user()->id)->orderBy('transactions.created_at', 'desc')->limit(5)->get()->toArray()
     ]);
   }
 }

@@ -1104,7 +1104,7 @@
                                     <th>#</th>
                                     <th>Transaction ID</th>
                                     <th>DATE</th>
-                                    <th>STATUS</th>
+                                    <th>PLAN</th>
                                     <th>AMOUNT</th>
                                 </tr>
                             </thead>
@@ -1115,14 +1115,20 @@
                                             Made</td>
                                     </tr>
                                 @else
+                                    @php
+                                        $id = 1;
+                                    @endphp
                                     @foreach ($transactions as $transaction)
                                         <tr>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
-                                            <td></td>
+                                            <td>{{ $id }}</td>
+                                            <td>{{ $transaction['tx_ref'] }}</td>
+                                            <td>{{ date('d M, Y', strtotime($transaction['created_at'])) }}</td>
+                                            <td>{{ $transaction['name'] }}</td>
+                                            <td>{{ $transaction['price'] }} ETB</td>
                                         </tr>
+                                        @php
+                                            $id++;
+                                        @endphp
                                     @endforeach
                                 @endif
                             </tbody>
