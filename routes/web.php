@@ -49,7 +49,7 @@ Route::get('/app/chat', $controller_path . '\apps\Chat@index')->name('app-chat')
 
 //Get all users invoice superadmin
 Route::get('/app/invoice/list', $controller_path . '\apps\InvoiceList@index')->name('app-invoice-list')->middleware('auth');
-Route::get('/app/invoice/preview', $controller_path . '\apps\InvoicePreview@index')->name('app-invoice-preview')->middleware('auth');
+Route::get('/app/invoice/preview/{id}', $controller_path . '\apps\InvoicePreview@index')->name('app-invoice-preview')->middleware('auth');
 Route::get('/app/invoice/print', $controller_path . '\apps\InvoicePrint@index')->name('app-invoice-print')->middleware('auth');
 Route::get('/app/invoice/edit', $controller_path . '\apps\InvoiceEdit@index')->name('app-invoice-edit')->middleware('auth');
 Route::get('/app/invoice/add', $controller_path . '\apps\InvoiceAdd@index')->name('app-invoice-add')->middleware('auth');

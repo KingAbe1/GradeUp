@@ -51,7 +51,8 @@
                 <div>Chat</div>
             </a>
         </li>
-        <li class="menu-item {{ $currentRouteName == 'app-invoice-list' ? 'active' : '' }}">
+        <li
+            class="menu-item {{ $currentRouteName == 'app-invoice-list' || $currentRouteName == 'app-invoice-preview' ? 'active' : '' }}">
             <a href="/app/invoice/list" class="menu-link">
                 <i class="menu-icon tf-icons ti ti-file-dollar"></i>
                 <div>Manage Invoice</div>
