@@ -74,7 +74,7 @@ Route::get('/app/access-roles', $controller_path . '\apps\AccessRoles@index')->n
 Route::get('/app/access-permission', $controller_path . '\apps\AccessPermission@index')->name('app-access-permission')->middleware('auth');
 
 // pages
-Route::get('/pages/profile-user', $controller_path . '\pages\UserProfile@index')->name('pages-profile-user')->middleware('auth');
+Route::get('/pages/profile-user/{id}', $controller_path . '\pages\UserProfile@index')->name('pages-profile-user')->middleware('auth');
 Route::get('/pages/profile-teams', $controller_path . '\pages\UserTeams@index')->name('pages-profile-teams')->middleware('auth');
 Route::get('/pages/profile-projects', $controller_path . '\pages\UserProjects@index')->name('pages-profile-projects')->middleware('auth');
 Route::get('/pages/profile-connections', $controller_path . '\pages\UserConnections@index')->name('pages-profile-connections')->middleware('auth');

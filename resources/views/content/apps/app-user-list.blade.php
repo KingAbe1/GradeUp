@@ -189,17 +189,17 @@
                             <td>
                                 <div class="d-flex align-items-center">
                                     <span data-bs-toggle='tooltip' data-bs-html='true' title='View Profile'>
-                                        <a href="/pages/profile-user" class="text-body  view-record"><i
-                                                class="ti ti-eye mx-2"></i></a>
+                                        <a href="/pages/profile-user/{{ $total_user->id }}"
+                                            class="text-body  view-record"><i class="ti ti-eye mx-2"></i></a>
                                     </span>
                                     @if ($total_user->status == 1)
-                                        <a href="/app/user/list/{{ Auth::user()->id }}" class="text-body suspend-record">
+                                        <a href="/app/user/list/{{ $total_user->id }}" class="text-body suspend-record">
                                             <span data-bs-toggle='tooltip' data-bs-html='true' title='Ban'>
                                                 <i class="fa-solid fa-ban mt-2"></i>
                                             </span>
                                         </a>
                                     @else
-                                        <a href="/app/user/list/{{ Auth::user()->id }}" class="text-body activate-record">
+                                        <a href="/app/user/list/{{ $total_user->id }}" class="text-body activate-record">
                                             <span data-bs-toggle='tooltip' data-bs-html='true' title='Activate'>
                                                 <i class="fa-solid fa-check mt-2"></i>
                                             </span>
