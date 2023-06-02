@@ -177,15 +177,25 @@
                                 @endif
                             </td>
                             <td>{{ $total_user->trail ? 'Yes' : 'No' }}</td>
-                            <td>{{ $total_user->plan_name }}</td>
-                            <td>Chapa</td>
                             <td>
-                                @if ($total_user->status == 1)
-                                    Active
+                                @if ($total_user->plan_id == 1)
+                                    <span class="badge bg-label-secondary">{{ $total_user->plan_name }}</span>
+                                @elseif($total_user->plan_id == 2)
+                                    <span class="badge bg-label-warning">{{ $total_user->plan_name }}</span>
                                 @else
-                                    Inactive
+                                    <span class="badge bg-label-primary">{{ $total_user->plan_name }}</span>
                                 @endif
                             </td>
+                            <td>Chapa</td>
+                            @if ($total_user->status == 1)
+                                <td>
+                                    <span class="badge bg-label-success">Active</span>
+                                </td>
+                            @else
+                                <td>
+                                    <span class="badge bg-label-danger">Inactive</span>
+                                </td>
+                            @endif
                             <td>
                                 <div class="d-flex align-items-center">
                                     <span data-bs-toggle='tooltip' data-bs-html='true' title='View Profile'>

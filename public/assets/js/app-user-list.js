@@ -213,7 +213,7 @@ $(function () {
           });
         // Adding plan filter once table initialized
         this.api()
-          .columns(3)
+          .columns(4)
           .every(function () {
             var column = this;
             var select = $(
@@ -229,7 +229,14 @@ $(function () {
               .unique()
               .sort()
               .each(function (d, j) {
-                select.append('<option value="' + d + '">' + d + '</option>');
+                // Check if the main string contains the substring
+                if (d.indexOf('Golden') !== -1) {
+                  select.append('<option value="Golden Plan">Golden Plan</option>');
+                } else if (d.indexOf('Platinum') !== -1) {
+                  select.append('<option value="Platinum Plan">Platinum Plan</option>');
+                } else {
+                  select.append('<option value="Basic Plan">Basic Plan</option>');
+                }
               });
           });
         // Adding status filter once table initialized
@@ -237,8 +244,9 @@ $(function () {
           .columns(6)
           .every(function () {
             var column = this;
+            // console.log(this);
             var select = $(
-              '<select id="FilterTransaction" class="form-select text-capitalize"><option value=""> Select Status </option></select>'
+              '<select id="FilterTransaction" class="form-select"><option value=""> Select Status </option></select>'
             )
               .appendTo('.user_status')
               .on('change', function () {
@@ -250,8 +258,12 @@ $(function () {
               .unique()
               .sort()
               .each(function (d, j) {
-                console.log(d);
-                select.append('<option value="' + d + '" class="text-capitalize">' + d + '</option>');
+                // Check if the main string contains the substring
+                if (d.indexOf('Active') !== -1) {
+                  select.append('<option value="Active">Active</option>');
+                } else {
+                  select.append('<option value="Inactive">Inactive</option>');
+                }
               });
           });
       }
