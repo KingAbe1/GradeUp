@@ -20,7 +20,7 @@
 
 @section('content')
     <h4 class="fw-bold py-3 mb-4">
-        <span class="text-muted fw-light">Manage Invoice</span>
+        <span class="text-muted fw-light">Home /</span> Manage Invoice
     </h4>
 
     <!-- Invoice List Table -->
