@@ -99,8 +99,10 @@ Route::get('/pages/account-settings-connections', $controller_path . '\pages\Acc
 Route::get('/auth/login', $controller_path . '\authentications\LoginBasic@index')->name('auth-login');
 Route::post('/auth/login', $controller_path . '\authentications\LoginBasic@check')->name('auth-login-check');
 
-//Show registration page
+//Show registration page for students
 Route::get('/auth/register', $controller_path . '\authentications\RegisterMultiSteps@index')->name('auth-register');
+//Show registration page for students
+Route::get('/auth/teach-register', $controller_path . '\authentications\RegisterMultiSteps@teachindex')->name('teach-auth-register');
 //Registering students
 Route::post('/auth/register', $controller_path . '\authentications\RegisterMultiSteps@store')->name('auth-register-students');
 
@@ -110,9 +112,9 @@ Route::post('/auth/register', $controller_path . '\authentications\RegisterMulti
 // Route::get('/auth/register-cover', $controller_path . '\authentications\RegisterCover@index')->name('auth-register-cover')->middleware('auth');
 // Route::get('/auth/verify-email-basic', $controller_path . '\authentications\VerifyEmailBasic@index')->name('auth-verify-email-basic');
 // Route::get('/auth/verify-email-cover', $controller_path . '\authentications\VerifyEmailCover@index')->name('auth-verify-email-cover');
-// Route::get('/auth/reset-password-basic', $controller_path . '\authentications\ResetPasswordBasic@index')->name('auth-reset-password-basic');
+Route::get('/auth/reset-password-basic', $controller_path . '\authentications\ResetPasswordBasic@index')->name('auth-reset-password-basics');
 // Route::get('/auth/reset-password-cover', $controller_path . '\authentications\ResetPasswordCover@index')->name('auth-reset-password-cover');
-// Route::get('/auth/forgot-password-basic', $controller_path . '\authentications\ForgotPasswordBasic@index')->name('auth-reset-password-basic');
+Route::get('/auth/forgot-password-basic', $controller_path . '\authentications\ForgotPasswordBasic@index')->name('auth-reset-password-basic');
 // Route::get('/auth/forgot-password-cover', $controller_path . '\authentications\ForgotPasswordCover@index')->name('auth-forgot-password-cover');
 // Route::get('/auth/two-steps-basic', $controller_path . '\authentications\TwoStepsBasic@index')->name('auth-two-steps-basic');
 // Route::get('/auth/two-steps-cover', $controller_path . '\authentications\TwoStepsCover@index')->name('auth-two-steps-cover');

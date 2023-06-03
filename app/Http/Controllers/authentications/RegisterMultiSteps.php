@@ -15,6 +15,11 @@ class RegisterMultiSteps extends Controller
     $pageConfigs = ['myLayout' => 'blank'];
     return view('content.authentications.auth-register', ['pageConfigs' => $pageConfigs, 'plans' => Plan::all()]);
   }
+  public function teachindex()
+  {
+    $pageConfigs = ['myLayout' => 'blank'];
+    return view('content.authentications.auth-teach-register', ['pageConfigs' => $pageConfigs, 'plans' => Plan::all()]);
+  }
   public function store(Request $request)
   {
     $user = $request->all();
