@@ -268,6 +268,62 @@ document.addEventListener('DOMContentLoaded', function (e) {
                 message: 'Please select your region'
               }
             }
+          },
+          multiStepsTeachBefore: {
+            validators: {
+              notEmpty: {
+                message: 'Please select one of the options given'
+              }
+            }
+          },
+          school_teach_name: {
+            validators: {
+              notEmpty: {
+                message: 'Please enter the school name you have taught before'
+              }
+            }
+          },
+          choice_education: {
+            validators: {
+              notEmpty: {
+                message: 'Please select one of the options given'
+              }
+            }
+          },
+          educational_level: {
+            validators: {
+              notEmpty: {
+                message: 'Please select one of the options given'
+              }
+            }
+          },
+          graduation_subject: {
+            validators: {
+              notEmpty: {
+                message: 'Please enter your major'
+              }
+            }
+          },
+          uni_coll_name: {
+            validators: {
+              notEmpty: {
+                message: 'Please enter your University or College name that you went to'
+              }
+            }
+          },
+          tempo: {
+            validators: {
+              notEmpty: {
+                message: 'Please uplod your tempo'
+              }
+            }
+          },
+          grade_future: {
+            validators: {
+              notEmpty: {
+                message: "Please select a grade that you're comfortable teaching"
+              }
+            }
           }
         },
         plugins: {
