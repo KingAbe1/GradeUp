@@ -37,7 +37,7 @@ class RegisterMultiSteps extends Controller
       'grade' => $user['grade'],
       'region' => $user['multiStepsCity'],
       'plan' => $user['customRadioIcon'],
-      'plan_trail' => '15',
+      'plan_trail' => '14',
       'status' => '1',
       'role_id' => 2,
       'password' => Hash::make($user['multiStepsPass'])
