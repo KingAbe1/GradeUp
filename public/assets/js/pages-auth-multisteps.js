@@ -95,6 +95,18 @@ document.addEventListener('DOMContentLoaded', function (e) {
         linear: true
       });
 
+      document.querySelector('#multiStepsEmail').addEventListener('keyup', () => {
+        document.querySelector('#error_email').innerText = '';
+      });
+
+      document.querySelector('#multiStepsUsername').addEventListener('keyup', () => {
+        document.querySelector('#error_username').innerText = '';
+      });
+
+      document.querySelector('#multiStepsMobile').addEventListener('keyup', () => {
+        document.querySelector('#error_phone').innerText = '';
+      });
+
       // Account details
       const multiSteps1 = FormValidation.formValidation(stepsValidationFormStep1, {
         fields: {
@@ -165,7 +177,35 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
       }).on('core.form.valid', function () {
         // Jump to the next step when all fields in the current step are valid
-        validationStepper.next();
+        $.ajax({
+          type: 'POST',
+          url: '/registeration-checker',
+          data: {
+            user_name: multiStepsUsername.value,
+            email: multiStepsEmail.value
+          },
+          success: function (data) {
+            if (data.username != 0 || data.email != 0) {
+              if (data.username != 0) {
+                document.querySelector('#multiStepsUsername').classList.add('is-invalid');
+                document.querySelector('#error_username').innerText =
+                  'Username is already taken please use another one';
+              }
+              if (data.email != 0) {
+                document.querySelector('#multiStepsEmail').classList.add('is-invalid');
+                document.querySelector('#error_email').innerText = 'Email is already taken please use another one';
+              }
+            } else {
+              document.querySelector('#error_username').innerText = '';
+              document.querySelector('#error_email').innerText = '';
+
+              validationStepper.next();
+            }
+          },
+          error: function (e) {
+            console.log(e);
+          }
+        });
       });
 
       // Personal info
@@ -247,7 +287,30 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
       }).on('core.form.valid', function () {
         // Jump to the next step when all fields in the current step are valid
-        validationStepper.next();
+        $.ajax({
+          type: 'POST',
+          url: '/registeration-phone-checker',
+          data: {
+            phone: document.querySelector('#multiStepsMobile').value
+          },
+          success: function (data) {
+            if (data.phone != 0) {
+              // document.querySelector('#multiStepsMobile').parentElement.classList.add('has-validation');
+              document
+                .querySelector('#personal')
+                .classList.replace('fv-plugins-bootstrap5-row-valid', 'fv-plugins-bootstrap5-row-invalid');
+              document.querySelector('#multiStepsMobile').classList.add('is-invalid');
+              document.querySelector('#error_phone').innerText =
+                'Mobile number is already taken please use another one';
+            } else {
+              document.querySelector('#multiStepsMobile').innerText = '';
+              validationStepper.next();
+            }
+          },
+          error: function (e) {
+            console.log(e);
+          }
+        });
       });
 
       // Social links

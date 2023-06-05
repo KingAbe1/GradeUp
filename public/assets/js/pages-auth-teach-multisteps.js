@@ -142,6 +142,18 @@ document.addEventListener('DOMContentLoaded', function (e) {
         linear: true
       });
 
+      document.querySelector('#multiStepsEmail').addEventListener('keyup', () => {
+        document.querySelector('#error_email').innerText = '';
+      });
+
+      document.querySelector('#multiStepsUsername').addEventListener('keyup', () => {
+        document.querySelector('#error_username').innerText = '';
+      });
+
+      document.querySelector('#multiStepsMobile').addEventListener('keyup', () => {
+        document.querySelector('#error_phone').innerText = '';
+      });
+
       // Account details
       const multiSteps1 = FormValidation.formValidation(stepsValidationFormStep1, {
         fields: {
@@ -212,7 +224,37 @@ document.addEventListener('DOMContentLoaded', function (e) {
         }
       }).on('core.form.valid', function () {
         // Jump to the next step when all fields in the current step are valid
-        validationStepper.next();
+        // The following code sends a GET request to the `/getdata` URL
+        // and displays the response in the `#resultarea` div.
+        $.ajax({
+          type: 'POST',
+          url: '/registeration-checker',
+          data: {
+            user_name: multiStepsUsername.value,
+            email: multiStepsEmail.value
+          },
+          success: function (data) {
+            if (data.username != 0 || data.email != 0) {
+              if (data.username != 0) {
+                document.querySelector('#multiStepsUsername').classList.add('is-invalid');
+                document.querySelector('#error_username').innerText =
+                  'Username is already taken please use another one';
+              }
+              if (data.email != 0) {
+                document.querySelector('#multiStepsEmail').classList.add('is-invalid');
+                document.querySelector('#error_email').innerText = 'Email is already taken please use another one';
+              }
+            } else {
+              document.querySelector('#error_username').innerText = '';
+              document.querySelector('#error_email').innerText = '';
+
+              validationStepper.next();
+            }
+          },
+          error: function (e) {
+            console.log(e);
+          }
+        });
       });
 
       // Personal info
@@ -248,20 +290,20 @@ document.addEventListener('DOMContentLoaded', function (e) {
               }
             }
           },
-          multiStepsSchool: {
-            validators: {
-              notEmpty: {
-                message: 'Please enter your school name'
-              }
-            }
-          },
-          grade: {
-            validators: {
-              notEmpty: {
-                message: 'Please select your current grade'
-              }
-            }
-          },
+          // multiStepsSchool: {
+          //   validators: {
+          //     notEmpty: {
+          //       message: 'Please enter your school name'
+          //     }
+          //   }
+          // },
+          // grade: {
+          //   validators: {
+          //     notEmpty: {
+          //       message: 'Please choose a grade that like to teach'
+          //     }
+          //   }
+          // },
           multiStepsCity: {
             validators: {
               notEmpty: {
@@ -290,34 +332,34 @@ document.addEventListener('DOMContentLoaded', function (e) {
               }
             }
           },
-          educational_level: {
-            validators: {
-              notEmpty: {
-                message: 'Please select one of the options given'
-              }
-            }
-          },
-          graduation_subject: {
-            validators: {
-              notEmpty: {
-                message: 'Please enter your major'
-              }
-            }
-          },
-          uni_coll_name: {
-            validators: {
-              notEmpty: {
-                message: 'Please enter your University or College name that you went to'
-              }
-            }
-          },
-          tempo: {
-            validators: {
-              notEmpty: {
-                message: 'Please uplod your tempo'
-              }
-            }
-          },
+          // educational_level: {
+          //   validators: {
+          //     notEmpty: {
+          //       message: 'Please select one of the options given'
+          //     }
+          //   }
+          // },
+          // graduation_subject: {
+          //   validators: {
+          //     notEmpty: {
+          //       message: 'Please enter your major'
+          //     }
+          //   }
+          // },
+          // uni_coll_name: {
+          //   validators: {
+          //     notEmpty: {
+          //       message: 'Please enter your University or College name that you went to'
+          //     }
+          //   }
+          // },
+          // tempo: {
+          //   validators: {
+          //     notEmpty: {
+          //       message: 'Please uplod your tempo'
+          //     }
+          //   }
+          // }
           grade_future: {
             validators: {
               notEmpty: {
@@ -335,6 +377,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
             rowSelector: function (field, ele) {
               // field is the field name
               // ele is the field element
+              // console.log('sss');
               switch (field) {
                 case 'multiStepsFirstName':
                   return '.col-sm-6';
@@ -352,12 +395,35 @@ document.addEventListener('DOMContentLoaded', function (e) {
         // Jump to the next step when all fields in the current step are valid
         // validationStepper.next();
 
-        console.log('submit');
-        // toastr.success('Thank you for registering with us!');
+        $.ajax({
+          type: 'POST',
+          url: '/registeration-phone-checker',
+          data: {
+            phone: multiStepsMobile.value
+          },
+          success: function (data) {
+            if (data.phone != 0) {
+              // document.querySelector('#multiStepsMobile').parentElement.classList.add('has-validation');
+              document
+                .querySelector('#personal')
+                .classList.replace('fv-plugins-bootstrap5-row-valid', 'fv-plugins-bootstrap5-row-invalid');
+              document.querySelector('#multiStepsMobile').classList.add('is-invalid');
+              document.querySelector('#error_phone').innerText =
+                'Mobile number is already taken please use another one';
+            } else {
+              document.querySelector('#multiStepsMobile').innerText = '';
 
-        // setTimeout(() => {
-        //   stepsValidationForm.submit();
-        // }, 2000);
+              toastr.success('Thank you for registering with us!');
+
+              setTimeout(() => {
+                stepsValidationForm.submit();
+              }, 2000);
+            }
+          },
+          error: function (e) {
+            console.log(e);
+          }
+        });
       });
 
       // Social links

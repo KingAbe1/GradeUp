@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\authentications\RegisterMultiSteps;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\laravel_example\UserManagement;
 
@@ -101,11 +102,12 @@ Route::post('/auth/login', $controller_path . '\authentications\LoginBasic@check
 
 //Show registration page for students
 Route::get('/auth/register', $controller_path . '\authentications\RegisterMultiSteps@index')->name('auth-register');
-//Show registration page for students
+//Show registration page for teachers
 Route::get('/auth/teach-register', $controller_path . '\authentications\RegisterMultiSteps@teachindex')->name('teach-auth-register');
 //Registering students
 Route::post('/auth/register', $controller_path . '\authentications\RegisterMultiSteps@store')->name('auth-register-students');
-
+//Registering teachers
+Route::post('/auth/teach-register', $controller_path . '\authentications\RegisterMultiSteps@store_teacher')->name('auth-teach-register');
 
 // Route::get('/auth/login-cover', $controller_path . '\authentications\LoginCover@index')->name('auth-login-cover')->middleware('auth');
 // Route::get('/auth/register-basic', $controller_path . '\authentications\RegisterBasic@index')->name('auth-register-basic')->middleware('auth');
@@ -213,6 +215,10 @@ Route::get('/auth/forgot-password-basic', $controller_path . '\authentications\F
 Route::get('/laravel/user-management', [UserManagement::class, 'UserManagement'])->name('laravel-example-user-management')->middleware('auth')->middleware('auth');
 Route::resource('/user-list', UserManagement::class)->middleware('auth');
 
+
+//Ajax Request
+Route::post('/registeration-checker', [RegisterMultiSteps::class, 'checker'])->name('register-checker');
+Route::post('/registeration-phone-checker', [RegisterMultiSteps::class, 'phone_checker'])->name('register-phone-checker');
 // Route::middleware([
 //   'auth:sanctum',
 //   config('jetstream.auth_session'),

@@ -107,11 +107,14 @@
                                             <label class="form-label" for="multiStepsUsername">Username</label>
                                             <input type="text" name="multiStepsUsername" id="multiStepsUsername"
                                                 class="form-control" placeholder="AbelLe" />
+                                            <span style="color:#ea5455;font-size:0.8125rem;" id="error_username"></span>
+
                                         </div>
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsEmail">Email</label>
                                             <input type="email" name="multiStepsEmail" id="multiStepsEmail"
                                                 class="form-control" placeholder="abelle@gmail.com" aria-label="john.doe" />
+                                            <span style="color:#ea5455;font-size:0.8125rem;" id="error_email"></span>
                                         </div>
                                         <div class="col-sm-6 form-password-toggle">
                                             <label class="form-label" for="multiStepsPass">Password</label>
@@ -152,7 +155,7 @@
                                         <h3 class="mb-1">Personal Information</h3>
                                         <p>Enter Your Personal Information</p>
                                     </div>
-                                    <div class="row g-3">
+                                    <div class="row g-3" id="personal">
                                         <div class="col-sm-6">
                                             <label class="form-label" for="multiStepsFirstName">First Name</label>
                                             <input type="text" id="multiStepsFirstName" name="multiStepsFirstName"
@@ -169,6 +172,7 @@
                                                 <span class="input-group-text">ET (+251)</span>
                                                 <input type="text" id="multiStepsMobile" name="multiStepsMobile"
                                                     class="form-control" placeholder="956395579" />
+                                                <span style="color:#ea5455;font-size:0.8125rem;" id="error_phone"></span>
                                             </div>
                                         </div>
                                         <div class="col-md-6">
