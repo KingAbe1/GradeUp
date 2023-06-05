@@ -31,7 +31,7 @@ class LoginBasic extends Controller
         $now = Carbon::now();
         $get_created_date = User::where('id', $user->id)->select('created_at')->get()->toArray();
         $date_to_be_expired = Carbon::parse($get_created_date[0]['created_at']);
-        $date_to_be_expired->addDays(14);
+        $date_to_be_expired->addDays(15);
 
         $date_diff = $now->diffInDays($date_to_be_expired);
         // dd($date_diff);
