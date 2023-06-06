@@ -20,12 +20,6 @@ $(function () {
 
   // Variable declaration for table
   var dt_user_table = $('.datatables-users');
-  // select2 = $('.select2'),
-  // userView = baseUrl + 'app/user/view/account',
-  // statusObj = {
-  //   1: { title: 'Active', class: 'bg-label-success' },
-  //   2: { title: 'Inactive', class: 'bg-label-secondary' }
-  // };
 
   // Users datatable
   if (dt_user_table.length) {
@@ -191,7 +185,7 @@ $(function () {
       initComplete: function () {
         // Adding role filter once table initialized
         this.api()
-          .columns(2)
+          .columns(4)
           .every(function () {
             var column = this;
             // console.log(column);
@@ -213,11 +207,11 @@ $(function () {
           });
         // Adding plan filter once table initialized
         this.api()
-          .columns(4)
+          .columns(3)
           .every(function () {
             var column = this;
             var select = $(
-              '<select id="UserPlan" class="form-select text-capitalize"><option value=""> Select Plan </option></select>'
+              '<select id="UserPlan" class="form-select text-capitalize"><option value=""> Select Region </option></select>'
             )
               .appendTo('.user_plan')
               .on('change', function () {
@@ -230,18 +224,12 @@ $(function () {
               .sort()
               .each(function (d, j) {
                 // Check if the main string contains the substring
-                if (d.indexOf('Golden') !== -1) {
-                  select.append('<option value="Golden Plan">Golden Plan</option>');
-                } else if (d.indexOf('Platinum') !== -1) {
-                  select.append('<option value="Platinum Plan">Platinum Plan</option>');
-                } else {
-                  select.append('<option value="Basic Plan">Basic Plan</option>');
-                }
+                select.append('<option value="' + d + '">' + d + '</option>');
               });
           });
         // Adding status filter once table initialized
         this.api()
-          .columns(6)
+          .columns(5)
           .every(function () {
             var column = this;
             // console.log(this);

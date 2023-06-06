@@ -51,7 +51,7 @@
                         <div class="content-left">
                             <span>Total Users</span>
                             <div class="d-flex align-items-center my-1">
-                                <h4 class="mb-0 me-2">{{ count($total_users) }}</h4>
+                                <h4 class="mb-0 me-2">{{ $total }}</h4>
                                 {{-- <span class="text-success">(+29%)</span> --}}
                             </div>
                             {{-- <span>Total Users</span> --}}
@@ -138,11 +138,11 @@
                     <tr>
                         <th>#</th>
                         <th>User</th>
+                        <th>Mobile Number</th>
+                        <th>Region</th>
                         <th>Role</th>
-                        <th>Trail Peroid</th>
-                        <th>Plan</th>
-                        <th>Billing</th>
                         <th>Status</th>
+                        <th>Created Date</th>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -150,19 +150,20 @@
                     @php
                         $id = 1;
                     @endphp
-                    @foreach ($total_users as $total_user)
+                    @foreach ($user_lists as $total_user)
                         <tr>
                             <td>{{ $id }}</td>
                             <td>
                                 <div class="d-flex justify-content-start align-items-center user-name">
                                     <div class="avatar-wrapper">
                                         <div class="avatar avatar-sm me-3">
-                                            <img src="{{ $total_user->profile_photo_url }}" alt="Avatar"
-                                                class="rounded-circle">
+                                            <img src="{{ $total_user->profile_photo_url == null ? $total_user->profile_photo_url : asset('assets/img/avatars/user.png') }}"
+                                                alt="Avatar" class="rounded-circle">
                                         </div>
                                     </div>
                                     <div class="d-flex flex-column">
-                                        <a href="" class="text-body text-truncate"><span class="fw-semibold">
+                                        <a href="/pages/profile-user/{{ $total_user->id }}"
+                                            class="text-body text-truncate"><span class="fw-semibold">
                                                 {{ $total_user->first_name }} {{ $total_user->last_name }}
                                             </span></a>
                                         <small class="text-muted">
@@ -171,6 +172,8 @@
                                     </div>
                                 </div>
                             </td>
+                            <th>+251{{ $total_user->phone }}</th>
+                            <th>{{ $total_user->region }}</th>
                             <td>
                                 @if ($total_user->role_name == 'Student')
                                     Student
@@ -178,17 +181,7 @@
                                     Teacher
                                 @endif
                             </td>
-                            <td>{{ $total_user->trail ? 'Yes' : 'No' }}</td>
-                            <td>
-                                @if ($total_user->plan_id == 1)
-                                    <span class="badge bg-label-secondary">{{ $total_user->plan_name }}</span>
-                                @elseif($total_user->plan_id == 2)
-                                    <span class="badge bg-label-warning">{{ $total_user->plan_name }}</span>
-                                @else
-                                    <span class="badge bg-label-primary">{{ $total_user->plan_name }}</span>
-                                @endif
-                            </td>
-                            <td>Chapa</td>
+
                             @if ($total_user->status == 1)
                                 <td>
                                     <span class="badge bg-label-success">Active</span>
@@ -198,6 +191,7 @@
                                     <span class="badge bg-label-danger">Inactive</span>
                                 </td>
                             @endif
+                            <td>{{ date('d M, Y', strtotime($total_user->created_at)) }}</td>
                             <td>
                                 <div class="d-flex align-items-center">
                                     <span data-bs-toggle='tooltip' data-bs-html='true' title='View Profile'>
