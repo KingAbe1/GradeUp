@@ -70,7 +70,8 @@
                 <div class="card-body">
                     <div class="user-avatar-section">
                         <div class=" d-flex align-items-center flex-column">
-                            <img class="img-fluid rounded mb-3 pt-1 mt-4" src="{{ asset('assets/img/avatars/15.png') }}"
+                            <img class="img-fluid rounded mb-3 pt-1 mt-4"
+                                src="{{ $current_plans[0]['profile_photo_url'] == null ? $current_plans[0]['profile_photo_url'] : asset('assets/img/avatars/user.png') }}"
                                 height="100" width="100" alt="User avatar" />
                             <div class="user-info text-center">
                                 <h4 class="mb-2">{{ Auth::user()->first_name }} {{ Auth::user()->last_name }}</h4>
